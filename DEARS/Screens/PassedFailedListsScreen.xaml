@@ -1,0 +1,62 @@
+﻿<UserControl x:Class="PassedFailedListsScreen"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="800">
+    <StackPanel>
+        <GroupBox Grid.Row="0" >
+            <GroupBox.Header>Class Lists</GroupBox.Header>
+            <UniformGrid Rows="3" Columns="3">
+                <UniformGrid.Resources>
+                    <Style TargetType="{x:Type Label}">
+                        <Setter Property="Margin" Value="0,0,20,0" />
+                        <Setter Property="HorizontalAlignment" Value="Right" />
+                    </Style>
+                </UniformGrid.Resources>
+                <Label Content="Grade:"/>
+                <ComboBox/>
+                <Label/>
+
+                <Label Content="Discipline:"/>
+                <ComboBox/>
+                <CheckBox HorizontalAlignment="Center" VerticalAlignment="Center" Content="ALL"/>
+
+                <Label/>
+                <Label/>
+                <Button HorizontalAlignment="Center" Content="Generate"/>
+
+            </UniformGrid>
+        </GroupBox>
+        <GroupBox>
+            <GroupBox.Header>Course Lists</GroupBox.Header>
+            <UniformGrid Rows="3" Columns="3">
+                <UniformGrid.Resources>
+                    <Style TargetType="{x:Type Label}">
+                        <Setter Property="Margin" Value="0,0,20,0" />
+                        <Setter Property="HorizontalAlignment" Value="Right" />
+                    </Style>
+                </UniformGrid.Resources>
+                <Label Content="Grade:"/>
+                <ComboBox/>
+                <Label/>
+
+                <!--<Label Content="Discipline:"/>
+                <ComboBox/>
+                <CheckBox HorizontalAlignment="Center" VerticalAlignment="Center" Content="ALL"/>-->
+
+                <Label Content="Course:"/>
+                <ComboBox/>
+                <Label/>
+
+                <Label/>
+                <Label/>
+                <Button HorizontalAlignment="Center" Content="Generate"/>
+
+
+            </UniformGrid>
+        </GroupBox>
+
+    </StackPanel>
+</UserControl>

@@ -1,0 +1,115 @@
+﻿<Window x:Class="MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:DEARS;assembly=DEARS"
+        Loaded="Window_ContentRendered"
+        Title="MainWindow" Height="800" Width="800">
+    <Window.Resources>
+        <CollectionViewSource x:Key="TimeYearsViewSource" />
+        <CollectionViewSource x:Key="SemestersViewSource" />
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel>
+            <StackPanel>
+                <TextBlock FontSize="30" Grid.Column="0" Grid.Row="0">Main Menu</TextBlock>
+                <UniformGrid Name="SharedDataDisplayGrid" Margin="0,0,20,0">
+                    <Label>Year</Label>
+                    <ComboBox ItemsSource="{Binding Source={StaticResource TimeYearsViewSource}}" DisplayMemberPath="NameEnglish" SelectedValuePath="Id" SelectedValue="{Binding YearID}"></ComboBox>
+                    <Label>Semester</Label>
+                    <ComboBox ItemsSource="{Binding Source={StaticResource SemestersViewSource}}" DisplayMemberPath="NameEnglish" SelectedValuePath="Id" SelectedValue="{Binding SemesterID}"></ComboBox>
+                </UniformGrid>
+            </StackPanel>
+
+            <StackPanel Grid.Column="0" Grid.Row="1" Name="NavigationBar">
+                <StackPanel.Resources>
+                    <Style BasedOn="{StaticResource {x:Type ToggleButton}}" TargetType="RadioButton">
+                    </Style>
+                    
+                </StackPanel.Resources>
+                <RadioButton GroupName="NavigationBarRadios"  PreviewMouseDown="RadioButton_PreviewMouseDown"  Checked="Button_Click" Tag="DatabaseManagement">Database Management</RadioButton>
+                <Expander Header="Basic Data" IsExpanded="True">
+                    <StackPanel Margin="15,0,15,0">
+                        <RadioButton GroupName="NavigationBarRadios" PreviewMouseDown="RadioButton_PreviewMouseDown"  Checked="Button_Click" Tag="Disciplines">Disciplines</RadioButton>
+                        <RadioButton GroupName="NavigationBarRadios" PreviewMouseDown="RadioButton_PreviewMouseDown"  Checked="Button_Click" Tag="Courses">Courses</RadioButton>
+                        <RadioButton GroupName="NavigationBarRadios" PreviewMouseDown="RadioButton_PreviewMouseDown"  Checked="Button_Click" Tag="Students">Students</RadioButton>
+                        <RadioButton GroupName="NavigationBarRadios" PreviewMouseDown="RadioButton_PreviewMouseDown"  Checked="Button_Click" Tag="Teachers">Teachers</RadioButton>
+                    </StackPanel>
+                </Expander>
+                <Expander Header="Timeline" IsExpanded="True">
+                    <StackPanel Margin="15,0,15,0">
+                        <RadioButton GroupName="NavigationBarRadios" PreviewMouseDown="RadioButton_PreviewMouseDown"   Checked="Button_Click" Tag="TimelineManagement">Timeline Management</RadioButton>
+                        <!--<Label>Not So Friendly</Label>
+                        <RadioButton GroupName="NavigationBarRadios"  PreviewMouseDown="RadioButton_PreviewMouseDown"  Checked="Button_Click" Tag="TimeYears">Academic Years</RadioButton>
+                        <RadioButton GroupName="NavigationBarRadios"  PreviewMouseDown="RadioButton_PreviewMouseDown"  Checked="Button_Click" Tag="AcademicClasses">Academic Grades</RadioButton>
+                        <RadioButton GroupName="NavigationBarRadios"  PreviewMouseDown="RadioButton_PreviewMouseDown"  Checked="Button_Click" Tag="Semesters">Semesters</RadioButton>
+                        <RadioButton GroupName="NavigationBarRadios"  PreviewMouseDown="RadioButton_PreviewMouseDown"  Checked="Button_Click" Tag="Batches">Batches</RadioButton>
+                        <RadioButton GroupName="NavigationBarRadios"  PreviewMouseDown="RadioButton_PreviewMouseDown"  Checked="Button_Click" Tag="SemesterBatches">Semester Batches</RadioButton>-->
+                    </StackPanel>
+                </Expander>
+                <Expander Header="Semester Preparation" IsExpanded="True">
+                    <StackPanel Margin="15,0,15,0">
+                        <RadioButton GroupName="NavigationBarRadios"  PreviewMouseDown="RadioButton_PreviewMouseDown"  Checked="Button_Click" Tag="OfferedDisciplines">Offered Disciplines</RadioButton>
+                        <RadioButton GroupName="NavigationBarRadios"  PreviewMouseDown="RadioButton_PreviewMouseDown"  Checked="Button_Click" Tag="CoursesOffered">Offered Courses</RadioButton>
+                        <RadioButton GroupName="NavigationBarRadios"  PreviewMouseDown="RadioButton_PreviewMouseDown"  Checked="Button_Click" Tag="LoadDistribution">Load Disctribution</RadioButton>
+                        <RadioButton GroupName="NavigationBarRadios"  PreviewMouseDown="RadioButton_PreviewMouseDown"  Checked="Button_Click" Tag="DisciplineCurriculum">Discipline Curriculum</RadioButton>
+                    </StackPanel>
+                </Expander>
+                <Expander Header="Enrollment" IsExpanded="True">
+                    <StackPanel Margin="15,0,15,0">
+                        <RadioButton GroupName="NavigationBarRadios"  PreviewMouseDown="RadioButton_PreviewMouseDown"  Checked="Button_Click" Tag="StudentEnrollment">Student Registration</RadioButton>
+                        <RadioButton GroupName="NavigationBarRadios"  PreviewMouseDown="RadioButton_PreviewMouseDown"  Checked="Button_Click" Tag="DisciplinesEnrollment">Discipline Enrollment</RadioButton>
+                        <RadioButton GroupName="NavigationBarRadios"  PreviewMouseDown="RadioButton_PreviewMouseDown"  Checked="Button_Click" Tag="CourseEnrollment">Course Enrollment</RadioButton>
+                    </StackPanel>
+                </Expander>
+
+                <Expander Header="Exams Management" IsExpanded="True">
+                    <StackPanel Margin="15,0,15,0">
+                        <RadioButton GroupName="NavigationBarRadios"  PreviewMouseDown="RadioButton_PreviewMouseDown"  Checked="Button_Click" Tag="CourseworkMarks">Coursework Marks</RadioButton>
+                        <RadioButton GroupName="NavigationBarRadios"  PreviewMouseDown="RadioButton_PreviewMouseDown"  Checked="Button_Click" Tag="ExamAttendance">Exam Attendance</RadioButton>
+                        <RadioButton GroupName="NavigationBarRadios"  PreviewMouseDown="RadioButton_PreviewMouseDown"  Checked="Button_Click" Tag="ExamExcuse">Exam Excuse</RadioButton>
+                        <RadioButton GroupName="NavigationBarRadios"  PreviewMouseDown="RadioButton_PreviewMouseDown"  Checked="Button_Click" Tag="ExamMarks">Exam Marks</RadioButton>
+                        <RadioButton GroupName="NavigationBarRadios"  PreviewMouseDown="RadioButton_PreviewMouseDown"  Checked="Button_Click" Tag="MeetingResults" Margin="0,20,0,0">Meeting Results</RadioButton>
+                        <RadioButton GroupName="NavigationBarRadios"  PreviewMouseDown="RadioButton_PreviewMouseDown"  Checked="Button_Click" Tag="BoardResults">Board Results</RadioButton>
+                        <RadioButton GroupName="NavigationBarRadios"  PreviewMouseDown="RadioButton_PreviewMouseDown"  Checked="Button_Click" Tag="PassedFailedLists">Passed/Failed Lists</RadioButton>
+                    </StackPanel>
+                </Expander>
+
+                <RadioButton GroupName="NavigationBarRadios"  PreviewMouseDown="RadioButton_PreviewMouseDown"  Checked="Button_Click" Tag="Transcripts">Transcripts</RadioButton>
+
+            </StackPanel>
+        </StackPanel>
+                
+        <ToolBarTray Grid.Column="2" Grid.Row="0" Orientation="Vertical">
+            <ToolBar>
+
+                <Button Click="SaveButton_Click" ToolTip="Save All Changes to Database">
+                    <Image Source="Images/Save.png" Width="48" Height="48"/>
+                </Button>
+                <Button Click="DiscardButton_Click" ToolTip="Discard All Local Changes">
+                    <Image Source="Images/Delete.png" Width="48" Height="48"/>
+                </Button>
+                <Button Name="ImportFromExcelButton" Click="ImportFromExcelButton_Click" ToolTip="Import from Excel">
+                    <Image Source="Images/open _Excel.png" Width="48" Height="48"/>
+                </Button>
+                <Button Name="SaveToExcelButton" Click="SaveToExcelButton_Click" ToolTip="Save To Excel">
+                    <Image Source="Images/save _Excel.png" Width="48" Height="48"/>
+                </Button>
+                <!--<Button Name="DBConnectionButton" Click="DBConnectionButton_Click" ToolTip="Database Connection Dialog">
+                    <Image Source="Images/server-database.png" Width="48" Height="48"/>
+                </Button>-->
+            </ToolBar>
+        </ToolBarTray>
+
+        <ContentControl Name="MainArea" Grid.Column="1">
+        </ContentControl>
+    </Grid>
+</Window>

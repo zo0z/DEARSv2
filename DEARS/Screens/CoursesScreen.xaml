@@ -1,0 +1,47 @@
+﻿<UserControl x:Class="CoursesScreen"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:DEARS"
+    Height="Auto" Width="Auto" Loaded="UserControl_Loaded">
+    <UserControl.Resources>
+        <CollectionViewSource x:Key="CoursesViewSource" />
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <GroupBox Grid.Column="1" Grid.Row="0">
+            <GroupBox.Header>Query Parameters</GroupBox.Header>
+            <UniformGrid Rows="3" Columns="3">
+                <UniformGrid.Resources>
+                    <Style TargetType="Label">
+                        <Setter Property="Margin" Value="0,0,20,0" />
+                        <Setter Property="HorizontalAlignment" Value="Right" />
+                    </Style>
+                </UniformGrid.Resources>
+   
+            </UniformGrid>
+        </GroupBox>
+        <DataGrid Grid.Row="1" Width="Auto" CanUserAddRows="True"  AutoGenerateColumns="False" ItemsSource="{Binding Source={StaticResource CoursesViewSource}}">
+            <DataGrid.RowValidationRules>
+                <local:DuplicateValidationRule ValidationStep="UpdatedValue"/>
+            </DataGrid.RowValidationRules>
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Course Code" Binding="{Binding CourseCode}"/>
+                <DataGridTextColumn Header="Course Title (English)" Binding="{Binding TitleEnglish}"/>
+                <DataGridTextColumn Header="Course Title (Arabic)" Binding="{Binding TitleArabic}"/>
+                <DataGridTextColumn Header="File Path" />
+            </DataGrid.Columns>
+        </DataGrid>
+        <GroupBox Grid.Column="1" Grid.Row="2" MinHeight="80">
+            <GroupBox.Header>Help/Key</GroupBox.Header>
+            <TextBlock TextWrapping="Wrap">
+                This space shows help or other necessary information that is needed to confuse the user about this screen.
+                <LineBreak />
+                So go ahead and plase be confused!!!
+            </TextBlock>
+        </GroupBox>
+    </Grid>
+</UserControl>

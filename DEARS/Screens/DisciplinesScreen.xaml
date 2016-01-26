@@ -1,0 +1,46 @@
+﻿<UserControl x:Class="DisciplinesScreen"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Height="Auto" Width="Auto" Loaded="UserControl_Loaded">
+    <UserControl.Resources>
+        <CollectionViewSource x:Key="DisciplinesViewSource" />
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <GroupBox Grid.Column="1" Grid.Row="0">
+            <GroupBox.Header>Query Parameters</GroupBox.Header>
+            <UniformGrid Rows="3" Columns="3">
+                <UniformGrid.Resources>
+                    <Style TargetType="Label">
+                        <Setter Property="Margin" Value="0,0,20,0" />
+                        <Setter Property="HorizontalAlignment" Value="Right" />
+                    </Style>
+                </UniformGrid.Resources>
+
+            </UniformGrid>
+        </GroupBox>
+        <DataGrid Name="DisciplinesDataGrid" Grid.Row="1" Width="Auto" CanUserAddRows="True" AutoGenerateColumns="False" ItemsSource="{Binding Source={StaticResource DisciplinesViewSource}}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Name (English)" Binding="{Binding NameEnglish}"/>
+                <DataGridTextColumn Header="Name (Arabic)" Binding="{Binding NameArabic}"/>
+                <DataGridTextColumn Header="Short Name (English)" Binding="{Binding NameEnglishShort}"/>
+                <DataGridTextColumn Header="Short Name (Arabic)" Binding="{Binding NameArabicShort}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <GroupBox Grid.Column="1" Grid.Row="2" MinHeight="80">
+            <GroupBox.Header>Help/Key</GroupBox.Header>
+            <TextBlock TextWrapping="Wrap">
+                This space shows help or other necessary information that is needed to confuse the user about this screen.
+                <LineBreak />
+                So go ahead and plase be confused!!!
+            </TextBlock>
+            <!--<Button Click="Button_Click">
+                Test
+            </Button>-->
+        </GroupBox>
+    </Grid>
+</UserControl>

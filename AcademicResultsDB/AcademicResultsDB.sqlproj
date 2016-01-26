@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>AcademicResultsDB</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{fcbb836a-2902-4147-bf79-9b76733f551b}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql120DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>AcademicResultsDB</RootNamespace>
+    <AssemblyName>AcademicResultsDB</AssemblyName>
+    <ModelCollation>1033, CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <!-- Default to the v11.0 targets path if the targets file for the current VS version is not found -->
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Condition="'$(SQLDBExtensionsRefPath)' != ''" Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="BasicData" />
+    <Folder Include="Enrollment" />
+    <Folder Include="ExamsMarks" />
+    <Folder Include="Types" />
+    <Folder Include="Snapshots" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="BasicData\Courses.sql" />
+    <Build Include="BasicData\Disciplines.sql" />
+    <Build Include="BasicData\Students.sql" />
+    <Build Include="BasicData\Grades.sql" />
+    <Build Include="BasicData\TimeYears.sql" />
+    <Build Include="BasicData\Semesters.sql" />
+    <Build Include="BasicData\Teachers.sql" />
+    <Build Include="Enrollment\Batches.sql" />
+    <Build Include="Enrollment\BatchEnrollments.sql" />
+    <Build Include="Enrollment\SemesterBatches.sql" />
+    <Build Include="Enrollment\SemesterBatchEnrollments.sql" />
+    <Build Include="Enrollment\OfferedCourses.sql" />
+    <Build Include="Enrollment\OfferedDisciplines.sql" />
+    <Build Include="Enrollment\CourseEnrollments.sql" />
+    <Build Include="Enrollment\CourseTeachers.sql" />
+    <Build Include="Types\TuitionTypes.sql" />
+    <Build Include="Enrollment\CourseDisciplines.sql" />
+    <Build Include="ExamsMarks\MarksExamCW.sql" />
+    <Build Include="Types\ExamTypes.sql" />
+    <Build Include="Types\EnrollmentTypes.sql" />
+    <Build Include="Types\RecommendationTypes.sql" />
+    <Build Include="ExamsMarks\GPAwRecomm.sql" />
+    <Build Include="Types\RecommTranslations.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="AcademicResultsDB.refactorlog" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="AcademicResultsDB.publish.xml" />
+    <None Include="NiceStateDB.sql" />
+    <None Include="TypesScript.sql" />
+  </ItemGroup>
+</Project>

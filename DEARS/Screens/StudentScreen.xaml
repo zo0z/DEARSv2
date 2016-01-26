@@ -1,0 +1,116 @@
+﻿<UserControl x:Class="StudentScreen"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="800"
+             Loaded="UserControl_Loaded">
+    <UserControl.Resources>
+        <CollectionViewSource x:Key="StudentsViewSource"></CollectionViewSource>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <GroupBox Grid.Row="0" Grid.Column="0">
+            <GroupBox.Header>Search For Students:</GroupBox.Header>
+            <StackPanel Orientation="Horizontal" Height="Auto">
+                <TextBox Name="StudentSearchTextBox" MinWidth="300"></TextBox>
+                <Button Margin="20,0,0,0" Height="22" VerticalAlignment="Top" Click="SearchButton_Click">Search</Button>
+            </StackPanel>
+        </GroupBox>
+        <Expander Grid.Row="1" Grid.Column="0" IsExpanded="True">
+            <Expander.Header>Search Results
+            </Expander.Header>
+            <StackPanel>
+                <ToolBar>
+                    <Button Click="NewStudentButton_Click">
+                        <Image Name="NewStudentButton" Source="../Images/New.png" Width="24" Height="24"/>
+                    </Button>
+                    <Button Click="DeleteStudentButton_Click">
+                        <Image Source="../Images/Delete.png" Width="24" Height="24"/>
+                    </Button>
+                </ToolBar>
+
+                <DataGrid Name="StudentsDataGrid" ItemsSource="{Binding Source={StaticResource StudentsViewSource}}"
+                      CanUserAddRows="False" AutoGenerateColumns="False">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Index" Binding="{Binding Path=Index, UpdateSourceTrigger=LostFocus}"/>
+                        <DataGridTextColumn Header="University No" Binding="{Binding Path=UnivNo, UpdateSourceTrigger=LostFocus}"/>
+                        <DataGridTextColumn Header="Name (English)" Binding="{Binding Path=NameEnglish, UpdateSourceTrigger=LostFocus}"/>
+                        <DataGridTextColumn Header="Name (Arabic)" Binding="{Binding Path=NameArabic, UpdateSourceTrigger=LostFocus}"/>
+                        <DataGridTextColumn Header="Phone" />
+                        <DataGridTextColumn/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </StackPanel>
+        </Expander>
+        <Expander Header="Student Details" Grid.Column="0" Grid.Row="2"
+                  IsExpanded="True"
+                  Name="StudentDetailsBox"
+                  DataContext="{Binding ElementName=StudentsDataGrid, Path=SelectedItem}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="1" Grid.Row="0">Name (Arabic):</Label>
+                <Label Grid.Column="1" Grid.Row="1">Name (English):</Label>
+                <Label Grid.Column="1" Grid.Row="2">Index:</Label>
+                <Label Grid.Column="1" Grid.Row="3">University No:</Label>
+                <Label Grid.Column="1" Grid.Row="4">Phone No:</Label>
+                <Label Grid.Column="1" Grid.Row="5">Email:</Label>
+                <Label Grid.Column="1" Grid.Row="6">Address 1:</Label>
+                <Label Grid.Column="1" Grid.Row="7">Birth Date:</Label>
+                <Label Grid.Column="1" Grid.Row="8">Nationality:</Label>
+                <Label Grid.Column="1" Grid.Row="9">National ID Type:</Label>
+                <Label Grid.Column="1" Grid.Row="10">National ID No:</Label>
+                <TextBox Margin="20,5,0,5" Grid.Row="0" Grid.Column="2"
+                         Text="{Binding Path=NameArabic, UpdateSourceTrigger=LostFocus}"></TextBox>
+                <TextBox Margin="20,5,0,5" Grid.Row="1" Grid.Column="2"
+                         Text="{Binding Path=NameEnglish, UpdateSourceTrigger=LostFocus}"></TextBox>
+                <TextBox Margin="20,5,0,5" Grid.Row="2" Grid.Column="2"
+                         Text="{Binding Path=Index, UpdateSourceTrigger=LostFocus}"></TextBox>
+                <TextBox Margin="20,5,0,5" Grid.Row="3" Grid.Column="2"
+                         Text="{Binding Path=UnivNo, UpdateSourceTrigger=LostFocus}"></TextBox>
+                <TextBox Margin="20,5,0,5" Grid.Row="4" Grid.Column="2"
+                         Text="{}"></TextBox>
+                <TextBox Margin="20,5,0,5" Grid.Row="5" Grid.Column="2"
+                         Text="{}"></TextBox>
+                <TextBox Margin="20,5,0,5" Grid.Row="6" Grid.Column="2"
+                         Text="{}"></TextBox>
+                <DatePicker Grid.Row="7" Grid.Column="2" Margin="20,5,0,5"
+                         HorizontalAlignment="Left"   />
+                <TextBox Margin="20,5,0,5" Grid.Row="8" Grid.Column="2"
+                         Text="{}"></TextBox>
+                <TextBox Margin="20,5,0,5" Grid.Row="9" Grid.Column="2"
+                         Text="{}"></TextBox>
+                <TextBox Margin="20,5,0,5" Grid.Row="10" Grid.Column="2"
+                         Text="{}"></TextBox>
+                <Image VerticalAlignment="Top" Grid.Row="0" 
+                       Grid.Column="0" Grid.RowSpan="7"
+                       Source="/DEARS;component/Images/IMG_1529.JPG">
+                    <Image.Width>120</Image.Width>
+                    <Image.Height>180</Image.Height>
+                </Image>
+            </Grid>
+        </Expander>
+    </Grid>
+</UserControl>

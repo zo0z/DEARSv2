@@ -1,0 +1,3235 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="AcademicResultsDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BatchEnrollments">
+          <Key>
+            <PropertyRef Name="YearId" />
+            <PropertyRef Name="GradeId" />
+            <PropertyRef Name="StudentId" />
+          </Key>
+          <Property Name="YearId" Type="int" Nullable="false" />
+          <Property Name="GradeId" Type="int" Nullable="false" />
+          <Property Name="StudentId" Type="int" Nullable="false" />
+          <Property Name="EnrollmentTypeId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Batches">
+          <Key>
+            <PropertyRef Name="YearId" />
+            <PropertyRef Name="GradeId" />
+          </Key>
+          <Property Name="YearId" Type="int" Nullable="false" />
+          <Property Name="GradeId" Type="int" Nullable="false" />
+          <Property Name="NameEnglish" Type="nvarchar" MaxLength="50" />
+          <Property Name="NameArabic" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="CourseDisciplines">
+          <Key>
+            <PropertyRef Name="YearId" />
+            <PropertyRef Name="GradeId" />
+            <PropertyRef Name="SemesterId" />
+            <PropertyRef Name="CourseId" />
+            <PropertyRef Name="DisciplineId" />
+          </Key>
+          <Property Name="YearId" Type="int" Nullable="false" />
+          <Property Name="GradeId" Type="int" Nullable="false" />
+          <Property Name="SemesterId" Type="int" Nullable="false" />
+          <Property Name="CourseId" Type="int" Nullable="false" />
+          <Property Name="DisciplineId" Type="int" Nullable="false" />
+          <Property Name="Optional" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CourseEnrollments">
+          <Key>
+            <PropertyRef Name="YearId" />
+            <PropertyRef Name="GradeId" />
+            <PropertyRef Name="SemesterId" />
+            <PropertyRef Name="StudentId" />
+            <PropertyRef Name="CourseId" />
+          </Key>
+          <Property Name="YearId" Type="int" Nullable="false" />
+          <Property Name="GradeId" Type="int" Nullable="false" />
+          <Property Name="SemesterId" Type="int" Nullable="false" />
+          <Property Name="StudentId" Type="int" Nullable="false" />
+          <Property Name="CourseId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Courses">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CourseCode" Type="nchar" MaxLength="10" />
+          <Property Name="TitleArabic" Type="nvarchar(max)" />
+          <Property Name="TitleEnglish" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="CourseTeachers">
+          <Key>
+            <PropertyRef Name="YearId" />
+            <PropertyRef Name="GradeId" />
+            <PropertyRef Name="SemesterId" />
+            <PropertyRef Name="CourseId" />
+            <PropertyRef Name="TeacherId" />
+            <PropertyRef Name="TuitionTypeId" />
+          </Key>
+          <Property Name="YearId" Type="int" Nullable="false" />
+          <Property Name="GradeId" Type="int" Nullable="false" />
+          <Property Name="SemesterId" Type="int" Nullable="false" />
+          <Property Name="CourseId" Type="int" Nullable="false" />
+          <Property Name="TeacherId" Type="int" Nullable="false" />
+          <Property Name="TuitionTypeId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Disciplines">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameEnglish" Type="nvarchar" MaxLength="50" />
+          <Property Name="NameArabic" Type="nvarchar" MaxLength="50" />
+          <Property Name="NameEnglishShort" Type="nvarchar" MaxLength="50" />
+          <Property Name="NameArabicShort" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="EnrollmentTypes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="NameArabic" Type="nvarchar" MaxLength="50" />
+          <Property Name="NameEnglish" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ExamTypes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="NameArabic" Type="nvarchar" MaxLength="50" />
+          <Property Name="NameEnglish" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="GPAwRecomm">
+          <Key>
+            <PropertyRef Name="YearId" />
+            <PropertyRef Name="GradeId" />
+            <PropertyRef Name="StudentId" />
+          </Key>
+          <Property Name="YearId" Type="int" Nullable="false" />
+          <Property Name="GradeId" Type="int" Nullable="false" />
+          <Property Name="StudentId" Type="int" Nullable="false" />
+          <Property Name="GPA" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+          <Property Name="RecommendationId" Type="int" Nullable="false" />
+          <Property Name="CGPA" Type="decimal" Precision="5" Scale="3" />
+          <Property Name="CRecommendationId" Type="int" />
+        </EntityType>
+        <EntityType Name="Grades">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameEnglish" Type="nvarchar" MaxLength="50" />
+          <Property Name="NameArabic" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="MarksExamCW">
+          <Key>
+            <PropertyRef Name="YearId" />
+            <PropertyRef Name="GradeId" />
+            <PropertyRef Name="SemesterId" />
+            <PropertyRef Name="CourseId" />
+            <PropertyRef Name="StudentId" />
+          </Key>
+          <Property Name="YearId" Type="int" Nullable="false" />
+          <Property Name="GradeId" Type="int" Nullable="false" />
+          <Property Name="SemesterId" Type="int" Nullable="false" />
+          <Property Name="CourseId" Type="int" Nullable="false" />
+          <Property Name="StudentId" Type="int" Nullable="false" />
+          <Property Name="CWMark" Type="decimal" Precision="5" Scale="2" />
+          <Property Name="Present" Type="bit" />
+          <Property Name="Excuse" Type="bit" />
+          <Property Name="ExamMark" Type="decimal" Precision="5" Scale="2" />
+        </EntityType>
+        <EntityType Name="OfferedCourses">
+          <Key>
+            <PropertyRef Name="YearId" />
+            <PropertyRef Name="GradeId" />
+            <PropertyRef Name="SemesterId" />
+            <PropertyRef Name="CourseId" />
+          </Key>
+          <Property Name="YearId" Type="int" Nullable="false" />
+          <Property Name="GradeId" Type="int" Nullable="false" />
+          <Property Name="SemesterId" Type="int" Nullable="false" />
+          <Property Name="CourseId" Type="int" Nullable="false" />
+          <Property Name="ExamFraction" Type="int" Nullable="false" />
+          <Property Name="CourseWorkFraction" Type="int" Nullable="false" />
+          <Property Name="CreditHours" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OfferedDisciplines">
+          <Key>
+            <PropertyRef Name="YearId" />
+            <PropertyRef Name="GradeId" />
+            <PropertyRef Name="SemesterId" />
+            <PropertyRef Name="DisciplineId" />
+          </Key>
+          <Property Name="YearId" Type="int" Nullable="false" />
+          <Property Name="GradeId" Type="int" Nullable="false" />
+          <Property Name="SemesterId" Type="int" Nullable="false" />
+          <Property Name="DisciplineId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RecommendationTypes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="NameArabic" Type="nvarchar" MaxLength="50" />
+          <Property Name="NameEnglish" Type="nvarchar" MaxLength="50" />
+          <Property Name="Pass" Type="bit" Nullable="false" />
+          <Property Name="ShortNameEnglish" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="RecommTranslations">
+          <Key>
+            <PropertyRef Name="ResText" />
+          </Key>
+          <Property Name="ResText" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="RecommendationTypeN" Type="int" />
+        </EntityType>
+        <EntityType Name="SemesterBatchEnrollments">
+          <Key>
+            <PropertyRef Name="YearId" />
+            <PropertyRef Name="GradeId" />
+            <PropertyRef Name="SemesterId" />
+            <PropertyRef Name="StudentId" />
+          </Key>
+          <Property Name="YearId" Type="int" Nullable="false" />
+          <Property Name="GradeId" Type="int" Nullable="false" />
+          <Property Name="SemesterId" Type="int" Nullable="false" />
+          <Property Name="StudentId" Type="int" Nullable="false" />
+          <Property Name="DisciplineId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SemesterBatches">
+          <Key>
+            <PropertyRef Name="YearId" />
+            <PropertyRef Name="GradeId" />
+            <PropertyRef Name="SemesterId" />
+          </Key>
+          <Property Name="YearId" Type="int" Nullable="false" />
+          <Property Name="GradeId" Type="int" Nullable="false" />
+          <Property Name="SemesterId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Semesters">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="NameEnglish" Type="nchar" MaxLength="10" />
+          <Property Name="NameArabic" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Students">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Index" Type="int" />
+          <Property Name="UnivNo" Type="nchar" MaxLength="10" />
+          <Property Name="NameArabic" Type="nvarchar(max)" />
+          <Property Name="NameEnglish" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Teachers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameArabic" Type="nvarchar(max)" />
+          <Property Name="NameEnglish" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="TimeYears">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="NameEnglish" Type="nvarchar" MaxLength="50" />
+          <Property Name="NameArabic" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TuitionTypes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="NameArabic" Type="nvarchar" MaxLength="50" />
+          <Property Name="NameEnglish" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_Batch_Grades">
+          <End Role="Grades" Type="Self.Grades" Multiplicity="1" />
+          <End Role="Batches" Type="Self.Batches" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Grades">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Batches">
+              <PropertyRef Name="GradeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Batch_TimeYears">
+          <End Role="TimeYears" Type="Self.TimeYears" Multiplicity="1" />
+          <End Role="Batches" Type="Self.Batches" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TimeYears">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Batches">
+              <PropertyRef Name="YearId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BatchEnrollments_Batch">
+          <End Role="Batches" Type="Self.Batches" Multiplicity="1" />
+          <End Role="BatchEnrollments" Type="Self.BatchEnrollments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Batches">
+              <PropertyRef Name="YearId" />
+              <PropertyRef Name="GradeId" />
+            </Principal>
+            <Dependent Role="BatchEnrollments">
+              <PropertyRef Name="YearId" />
+              <PropertyRef Name="GradeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BatchEnrollments_EnrollmentType">
+          <End Role="EnrollmentTypes" Type="Self.EnrollmentTypes" Multiplicity="1" />
+          <End Role="BatchEnrollments" Type="Self.BatchEnrollments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EnrollmentTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BatchEnrollments">
+              <PropertyRef Name="EnrollmentTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BatchEnrollments_Grades">
+          <End Role="Grades" Type="Self.Grades" Multiplicity="1" />
+          <End Role="BatchEnrollments" Type="Self.BatchEnrollments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Grades">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BatchEnrollments">
+              <PropertyRef Name="GradeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BatchEnrollments_Students">
+          <End Role="Students" Type="Self.Students" Multiplicity="1" />
+          <End Role="BatchEnrollments" Type="Self.BatchEnrollments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Students">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BatchEnrollments">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BatchEnrollments_TimeYears">
+          <End Role="TimeYears" Type="Self.TimeYears" Multiplicity="1" />
+          <End Role="BatchEnrollments" Type="Self.BatchEnrollments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TimeYears">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BatchEnrollments">
+              <PropertyRef Name="YearId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CourseDisciplines_Courses">
+          <End Role="Courses" Type="Self.Courses" Multiplicity="1" />
+          <End Role="CourseDisciplines" Type="Self.CourseDisciplines" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Courses">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CourseDisciplines">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CourseDisciplines_Disciplines">
+          <End Role="Disciplines" Type="Self.Disciplines" Multiplicity="1" />
+          <End Role="CourseDisciplines" Type="Self.CourseDisciplines" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Disciplines">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CourseDisciplines">
+              <PropertyRef Name="DisciplineId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CourseDisciplines_Grades">
+          <End Role="Grades" Type="Self.Grades" Multiplicity="1" />
+          <End Role="CourseDisciplines" Type="Self.CourseDisciplines" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Grades">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CourseDisciplines">
+              <PropertyRef Name="GradeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CourseDisciplines_OfferedCourses">
+          <End Role="OfferedCourses" Type="Self.OfferedCourses" Multiplicity="1" />
+          <End Role="CourseDisciplines" Type="Self.CourseDisciplines" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OfferedCourses">
+              <PropertyRef Name="YearId" />
+              <PropertyRef Name="GradeId" />
+              <PropertyRef Name="SemesterId" />
+              <PropertyRef Name="CourseId" />
+            </Principal>
+            <Dependent Role="CourseDisciplines">
+              <PropertyRef Name="YearId" />
+              <PropertyRef Name="GradeId" />
+              <PropertyRef Name="SemesterId" />
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CourseDisciplines_OfferedDisciplines">
+          <End Role="OfferedDisciplines" Type="Self.OfferedDisciplines" Multiplicity="1" />
+          <End Role="CourseDisciplines" Type="Self.CourseDisciplines" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OfferedDisciplines">
+              <PropertyRef Name="YearId" />
+              <PropertyRef Name="GradeId" />
+              <PropertyRef Name="SemesterId" />
+              <PropertyRef Name="DisciplineId" />
+            </Principal>
+            <Dependent Role="CourseDisciplines">
+              <PropertyRef Name="YearId" />
+              <PropertyRef Name="GradeId" />
+              <PropertyRef Name="SemesterId" />
+              <PropertyRef Name="DisciplineId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CourseDisciplines_SemesterBatch">
+          <End Role="SemesterBatches" Type="Self.SemesterBatches" Multiplicity="1" />
+          <End Role="CourseDisciplines" Type="Self.CourseDisciplines" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SemesterBatches">
+              <PropertyRef Name="YearId" />
+              <PropertyRef Name="GradeId" />
+              <PropertyRef Name="SemesterId" />
+            </Principal>
+            <Dependent Role="CourseDisciplines">
+              <PropertyRef Name="YearId" />
+              <PropertyRef Name="GradeId" />
+              <PropertyRef Name="SemesterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CourseDisciplines_Semesters">
+          <End Role="Semesters" Type="Self.Semesters" Multiplicity="1" />
+          <End Role="CourseDisciplines" Type="Self.CourseDisciplines" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Semesters">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CourseDisciplines">
+              <PropertyRef Name="SemesterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CourseDisciplines_TimeYears">
+          <End Role="TimeYears" Type="Self.TimeYears" Multiplicity="1" />
+          <End Role="CourseDisciplines" Type="Self.CourseDisciplines" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TimeYears">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CourseDisciplines">
+              <PropertyRef Name="YearId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CourseEnrollments_Courses">
+          <End Role="Courses" Type="Self.Courses" Multiplicity="1" />
+          <End Role="CourseEnrollments" Type="Self.CourseEnrollments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Courses">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CourseEnrollments">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CourseEnrollments_Grades">
+          <End Role="Grades" Type="Self.Grades" Multiplicity="1" />
+          <End Role="CourseEnrollments" Type="Self.CourseEnrollments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Grades">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CourseEnrollments">
+              <PropertyRef Name="GradeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CourseEnrollments_OfferedCourses">
+          <End Role="OfferedCourses" Type="Self.OfferedCourses" Multiplicity="1" />
+          <End Role="CourseEnrollments" Type="Self.CourseEnrollments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OfferedCourses">
+              <PropertyRef Name="YearId" />
+              <PropertyRef Name="GradeId" />
+              <PropertyRef Name="SemesterId" />
+              <PropertyRef Name="CourseId" />
+            </Principal>
+            <Dependent Role="CourseEnrollments">
+              <PropertyRef Name="YearId" />
+              <PropertyRef Name="GradeId" />
+              <PropertyRef Name="SemesterId" />
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CourseEnrollments_SemesterBatchEnrollments">
+          <End Role="SemesterBatchEnrollments" Type="Self.SemesterBatchEnrollments" Multiplicity="1" />
+          <End Role="CourseEnrollments" Type="Self.CourseEnrollments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SemesterBatchEnrollments">
+              <PropertyRef Name="YearId" />
+              <PropertyRef Name="GradeId" />
+              <PropertyRef Name="SemesterId" />
+              <PropertyRef Name="StudentId" />
+            </Principal>
+            <Dependent Role="CourseEnrollments">
+              <PropertyRef Name="YearId" />
+              <PropertyRef Name="GradeId" />
+              <PropertyRef Name="SemesterId" />
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CourseEnrollments_Semesters">
+          <End Role="Semesters" Type="Self.Semesters" Multiplicity="1" />
+          <End Role="CourseEnrollments" Type="Self.CourseEnrollments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Semesters">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CourseEnrollments">
+              <PropertyRef Name="SemesterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CourseEnrollments_Students">
+          <End Role="Students" Type="Self.Students" Multiplicity="1" />
+          <End Role="CourseEnrollments" Type="Self.CourseEnrollments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Students">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CourseEnrollments">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CourseEnrollments_TimeYears">
+          <End Role="TimeYears" Type="Self.TimeYears" Multiplicity="1" />
+          <End Role="CourseEnrollments" Type="Self.CourseEnrollments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TimeYears">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CourseEnrollments">
+              <PropertyRef Name="YearId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CourseTeachers_Disciplines">
+          <End Role="Courses" Type="Self.Courses" Multiplicity="1" />
+          <End Role="CourseTeachers" Type="Self.CourseTeachers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Courses">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CourseTeachers">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CourseTeachers_Grades">
+          <End Role="Grades" Type="Self.Grades" Multiplicity="1" />
+          <End Role="CourseTeachers" Type="Self.CourseTeachers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Grades">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CourseTeachers">
+              <PropertyRef Name="GradeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CourseTeachers_OfferedCourses">
+          <End Role="OfferedCourses" Type="Self.OfferedCourses" Multiplicity="1" />
+          <End Role="CourseTeachers" Type="Self.CourseTeachers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OfferedCourses">
+              <PropertyRef Name="YearId" />
+              <PropertyRef Name="GradeId" />
+              <PropertyRef Name="SemesterId" />
+              <PropertyRef Name="CourseId" />
+            </Principal>
+            <Dependent Role="CourseTeachers">
+              <PropertyRef Name="YearId" />
+              <PropertyRef Name="GradeId" />
+              <PropertyRef Name="SemesterId" />
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CourseTeachers_Semesters">
+          <End Role="Semesters" Type="Self.Semesters" Multiplicity="1" />
+          <End Role="CourseTeachers" Type="Self.CourseTeachers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Semesters">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CourseTeachers">
+              <PropertyRef Name="SemesterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CourseTeachers_Teachers">
+          <End Role="Teachers" Type="Self.Teachers" Multiplicity="1" />
+          <End Role="CourseTeachers" Type="Self.CourseTeachers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teachers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CourseTeachers">
+              <PropertyRef Name="TeacherId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CourseTeachers_TimeYears">
+          <End Role="TimeYears" Type="Self.TimeYears" Multiplicity="1" />
+          <End Role="CourseTeachers" Type="Self.CourseTeachers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TimeYears">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CourseTeachers">
+              <PropertyRef Name="YearId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CourseTeachers_TuitionType">
+          <End Role="TuitionTypes" Type="Self.TuitionTypes" Multiplicity="1" />
+          <End Role="CourseTeachers" Type="Self.CourseTeachers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TuitionTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CourseTeachers">
+              <PropertyRef Name="TuitionTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GPAwRecomm_Batch">
+          <End Role="Batches" Type="Self.Batches" Multiplicity="1" />
+          <End Role="GPAwRecomm" Type="Self.GPAwRecomm" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Batches">
+              <PropertyRef Name="YearId" />
+              <PropertyRef Name="GradeId" />
+            </Principal>
+            <Dependent Role="GPAwRecomm">
+              <PropertyRef Name="YearId" />
+              <PropertyRef Name="GradeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GPAwRecomm_BatchEnrollments">
+          <End Role="BatchEnrollments" Type="Self.BatchEnrollments" Multiplicity="1" />
+          <End Role="GPAwRecomm" Type="Self.GPAwRecomm" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="BatchEnrollments">
+              <PropertyRef Name="YearId" />
+              <PropertyRef Name="GradeId" />
+              <PropertyRef Name="StudentId" />
+            </Principal>
+            <Dependent Role="GPAwRecomm">
+              <PropertyRef Name="YearId" />
+              <PropertyRef Name="GradeId" />
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GPAwRecomm_CRecommendations">
+          <End Role="RecommendationTypes" Type="Self.RecommendationTypes" Multiplicity="0..1" />
+          <End Role="GPAwRecomm" Type="Self.GPAwRecomm" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RecommendationTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GPAwRecomm">
+              <PropertyRef Name="CRecommendationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GPAwRecomm_Grades">
+          <End Role="Grades" Type="Self.Grades" Multiplicity="1" />
+          <End Role="GPAwRecomm" Type="Self.GPAwRecomm" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Grades">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GPAwRecomm">
+              <PropertyRef Name="GradeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GPAwRecomm_Recommendations">
+          <End Role="RecommendationTypes" Type="Self.RecommendationTypes" Multiplicity="1" />
+          <End Role="GPAwRecomm" Type="Self.GPAwRecomm" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RecommendationTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GPAwRecomm">
+              <PropertyRef Name="RecommendationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GPAwRecomm_Students">
+          <End Role="Students" Type="Self.Students" Multiplicity="1" />
+          <End Role="GPAwRecomm" Type="Self.GPAwRecomm" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Students">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GPAwRecomm">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GPAwRecomm_TimeYears">
+          <End Role="TimeYears" Type="Self.TimeYears" Multiplicity="1" />
+          <End Role="GPAwRecomm" Type="Self.GPAwRecomm" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TimeYears">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GPAwRecomm">
+              <PropertyRef Name="YearId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MarksExamCW_CourseEnrollment">
+          <End Role="CourseEnrollments" Type="Self.CourseEnrollments" Multiplicity="1" />
+          <End Role="MarksExamCW" Type="Self.MarksExamCW" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="CourseEnrollments">
+              <PropertyRef Name="YearId" />
+              <PropertyRef Name="GradeId" />
+              <PropertyRef Name="SemesterId" />
+              <PropertyRef Name="StudentId" />
+              <PropertyRef Name="CourseId" />
+            </Principal>
+            <Dependent Role="MarksExamCW">
+              <PropertyRef Name="YearId" />
+              <PropertyRef Name="GradeId" />
+              <PropertyRef Name="SemesterId" />
+              <PropertyRef Name="StudentId" />
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MarksExamCW_Courses">
+          <End Role="Courses" Type="Self.Courses" Multiplicity="1" />
+          <End Role="MarksExamCW" Type="Self.MarksExamCW" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Courses">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MarksExamCW">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MarksExamCW_Grades">
+          <End Role="Grades" Type="Self.Grades" Multiplicity="1" />
+          <End Role="MarksExamCW" Type="Self.MarksExamCW" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Grades">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MarksExamCW">
+              <PropertyRef Name="GradeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MarksExamCW_OfferedCourse">
+          <End Role="OfferedCourses" Type="Self.OfferedCourses" Multiplicity="1" />
+          <End Role="MarksExamCW" Type="Self.MarksExamCW" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OfferedCourses">
+              <PropertyRef Name="YearId" />
+              <PropertyRef Name="GradeId" />
+              <PropertyRef Name="SemesterId" />
+              <PropertyRef Name="CourseId" />
+            </Principal>
+            <Dependent Role="MarksExamCW">
+              <PropertyRef Name="YearId" />
+              <PropertyRef Name="GradeId" />
+              <PropertyRef Name="SemesterId" />
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MarksExamCW_Semesters">
+          <End Role="Semesters" Type="Self.Semesters" Multiplicity="1" />
+          <End Role="MarksExamCW" Type="Self.MarksExamCW" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Semesters">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MarksExamCW">
+              <PropertyRef Name="SemesterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MarksExamCW_Students">
+          <End Role="Students" Type="Self.Students" Multiplicity="1" />
+          <End Role="MarksExamCW" Type="Self.MarksExamCW" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Students">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MarksExamCW">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MarksExamCW_TimeYears">
+          <End Role="TimeYears" Type="Self.TimeYears" Multiplicity="1" />
+          <End Role="MarksExamCW" Type="Self.MarksExamCW" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TimeYears">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MarksExamCW">
+              <PropertyRef Name="YearId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OfferedCourses_Courses">
+          <End Role="Courses" Type="Self.Courses" Multiplicity="1" />
+          <End Role="OfferedCourses" Type="Self.OfferedCourses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Courses">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OfferedCourses">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OfferedCourses_Grades">
+          <End Role="Grades" Type="Self.Grades" Multiplicity="1" />
+          <End Role="OfferedCourses" Type="Self.OfferedCourses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Grades">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OfferedCourses">
+              <PropertyRef Name="GradeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OfferedCourses_SemesterBatch">
+          <End Role="SemesterBatches" Type="Self.SemesterBatches" Multiplicity="1" />
+          <End Role="OfferedCourses" Type="Self.OfferedCourses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SemesterBatches">
+              <PropertyRef Name="YearId" />
+              <PropertyRef Name="GradeId" />
+              <PropertyRef Name="SemesterId" />
+            </Principal>
+            <Dependent Role="OfferedCourses">
+              <PropertyRef Name="YearId" />
+              <PropertyRef Name="GradeId" />
+              <PropertyRef Name="SemesterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OfferedCourses_Semesters">
+          <End Role="Semesters" Type="Self.Semesters" Multiplicity="1" />
+          <End Role="OfferedCourses" Type="Self.OfferedCourses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Semesters">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OfferedCourses">
+              <PropertyRef Name="SemesterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OfferedCourses_TimeYears">
+          <End Role="TimeYears" Type="Self.TimeYears" Multiplicity="1" />
+          <End Role="OfferedCourses" Type="Self.OfferedCourses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TimeYears">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OfferedCourses">
+              <PropertyRef Name="YearId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OfferedDisciplines_Disciplines">
+          <End Role="Disciplines" Type="Self.Disciplines" Multiplicity="1" />
+          <End Role="OfferedDisciplines" Type="Self.OfferedDisciplines" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Disciplines">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OfferedDisciplines">
+              <PropertyRef Name="DisciplineId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OfferedDisciplines_Grades">
+          <End Role="Grades" Type="Self.Grades" Multiplicity="1" />
+          <End Role="OfferedDisciplines" Type="Self.OfferedDisciplines" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Grades">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OfferedDisciplines">
+              <PropertyRef Name="GradeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OfferedDisciplines_SemesterBatch">
+          <End Role="SemesterBatches" Type="Self.SemesterBatches" Multiplicity="1" />
+          <End Role="OfferedDisciplines" Type="Self.OfferedDisciplines" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SemesterBatches">
+              <PropertyRef Name="YearId" />
+              <PropertyRef Name="GradeId" />
+              <PropertyRef Name="SemesterId" />
+            </Principal>
+            <Dependent Role="OfferedDisciplines">
+              <PropertyRef Name="YearId" />
+              <PropertyRef Name="GradeId" />
+              <PropertyRef Name="SemesterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OfferedDisciplines_Semesters">
+          <End Role="Semesters" Type="Self.Semesters" Multiplicity="1" />
+          <End Role="OfferedDisciplines" Type="Self.OfferedDisciplines" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Semesters">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OfferedDisciplines">
+              <PropertyRef Name="SemesterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OfferedDisciplines_TimeYears">
+          <End Role="TimeYears" Type="Self.TimeYears" Multiplicity="1" />
+          <End Role="OfferedDisciplines" Type="Self.OfferedDisciplines" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TimeYears">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OfferedDisciplines">
+              <PropertyRef Name="YearId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SemesterBatch_Batch">
+          <End Role="Batches" Type="Self.Batches" Multiplicity="1" />
+          <End Role="SemesterBatches" Type="Self.SemesterBatches" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Batches">
+              <PropertyRef Name="YearId" />
+              <PropertyRef Name="GradeId" />
+            </Principal>
+            <Dependent Role="SemesterBatches">
+              <PropertyRef Name="YearId" />
+              <PropertyRef Name="GradeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SemesterBatch_Grades">
+          <End Role="Grades" Type="Self.Grades" Multiplicity="1" />
+          <End Role="SemesterBatches" Type="Self.SemesterBatches" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Grades">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SemesterBatches">
+              <PropertyRef Name="GradeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SemesterBatch_Semesters">
+          <End Role="Semesters" Type="Self.Semesters" Multiplicity="1" />
+          <End Role="SemesterBatches" Type="Self.SemesterBatches" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Semesters">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SemesterBatches">
+              <PropertyRef Name="SemesterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SemesterBatch_TimeYears">
+          <End Role="TimeYears" Type="Self.TimeYears" Multiplicity="1" />
+          <End Role="SemesterBatches" Type="Self.SemesterBatches" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TimeYears">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SemesterBatches">
+              <PropertyRef Name="YearId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SemesterBatchEnrollments_BatchEnrollments">
+          <End Role="BatchEnrollments" Type="Self.BatchEnrollments" Multiplicity="1" />
+          <End Role="SemesterBatchEnrollments" Type="Self.SemesterBatchEnrollments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BatchEnrollments">
+              <PropertyRef Name="YearId" />
+              <PropertyRef Name="GradeId" />
+              <PropertyRef Name="StudentId" />
+            </Principal>
+            <Dependent Role="SemesterBatchEnrollments">
+              <PropertyRef Name="YearId" />
+              <PropertyRef Name="GradeId" />
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SemesterBatchEnrollments_Disciplines">
+          <End Role="Disciplines" Type="Self.Disciplines" Multiplicity="1" />
+          <End Role="SemesterBatchEnrollments" Type="Self.SemesterBatchEnrollments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Disciplines">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SemesterBatchEnrollments">
+              <PropertyRef Name="DisciplineId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SemesterBatchEnrollments_Grades">
+          <End Role="Grades" Type="Self.Grades" Multiplicity="1" />
+          <End Role="SemesterBatchEnrollments" Type="Self.SemesterBatchEnrollments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Grades">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SemesterBatchEnrollments">
+              <PropertyRef Name="GradeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SemesterBatchEnrollments_OfferedDisciplines">
+          <End Role="OfferedDisciplines" Type="Self.OfferedDisciplines" Multiplicity="1" />
+          <End Role="SemesterBatchEnrollments" Type="Self.SemesterBatchEnrollments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OfferedDisciplines">
+              <PropertyRef Name="YearId" />
+              <PropertyRef Name="GradeId" />
+              <PropertyRef Name="SemesterId" />
+              <PropertyRef Name="DisciplineId" />
+            </Principal>
+            <Dependent Role="SemesterBatchEnrollments">
+              <PropertyRef Name="YearId" />
+              <PropertyRef Name="GradeId" />
+              <PropertyRef Name="SemesterId" />
+              <PropertyRef Name="DisciplineId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SemesterBatchEnrollments_SemesterBatches">
+          <End Role="SemesterBatches" Type="Self.SemesterBatches" Multiplicity="1" />
+          <End Role="SemesterBatchEnrollments" Type="Self.SemesterBatchEnrollments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SemesterBatches">
+              <PropertyRef Name="YearId" />
+              <PropertyRef Name="GradeId" />
+              <PropertyRef Name="SemesterId" />
+            </Principal>
+            <Dependent Role="SemesterBatchEnrollments">
+              <PropertyRef Name="YearId" />
+              <PropertyRef Name="GradeId" />
+              <PropertyRef Name="SemesterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SemesterBatchEnrollments_Semesters">
+          <End Role="Semesters" Type="Self.Semesters" Multiplicity="1" />
+          <End Role="SemesterBatchEnrollments" Type="Self.SemesterBatchEnrollments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Semesters">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SemesterBatchEnrollments">
+              <PropertyRef Name="SemesterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SemesterBatchEnrollments_Students">
+          <End Role="Students" Type="Self.Students" Multiplicity="1" />
+          <End Role="SemesterBatchEnrollments" Type="Self.SemesterBatchEnrollments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Students">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SemesterBatchEnrollments">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SemesterBatchEnrollments_TimeYears">
+          <End Role="TimeYears" Type="Self.TimeYears" Multiplicity="1" />
+          <End Role="SemesterBatchEnrollments" Type="Self.SemesterBatchEnrollments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TimeYears">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SemesterBatchEnrollments">
+              <PropertyRef Name="YearId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RecommTranslations_RecommendationTypes">
+          <End Role="RecommendationTypes" Type="Self.RecommendationTypes" Multiplicity="0..1" />
+          <End Role="RecommTranslations" Type="Self.RecommTranslations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RecommendationTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RecommTranslations">
+              <PropertyRef Name="RecommendationTypeN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AcademicResultsDBModelStoreContainer">
+          <EntitySet Name="BatchEnrollments" EntityType="Self.BatchEnrollments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Batches" EntityType="Self.Batches" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CourseDisciplines" EntityType="Self.CourseDisciplines" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CourseEnrollments" EntityType="Self.CourseEnrollments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Courses" EntityType="Self.Courses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CourseTeachers" EntityType="Self.CourseTeachers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Disciplines" EntityType="Self.Disciplines" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EnrollmentTypes" EntityType="Self.EnrollmentTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ExamTypes" EntityType="Self.ExamTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GPAwRecomm" EntityType="Self.GPAwRecomm" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Grades" EntityType="Self.Grades" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MarksExamCW" EntityType="Self.MarksExamCW" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OfferedCourses" EntityType="Self.OfferedCourses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OfferedDisciplines" EntityType="Self.OfferedDisciplines" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RecommendationTypes" EntityType="Self.RecommendationTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RecommTranslations" EntityType="Self.RecommTranslations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SemesterBatchEnrollments" EntityType="Self.SemesterBatchEnrollments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SemesterBatches" EntityType="Self.SemesterBatches" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Semesters" EntityType="Self.Semesters" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Students" EntityType="Self.Students" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Teachers" EntityType="Self.Teachers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TimeYears" EntityType="Self.TimeYears" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TuitionTypes" EntityType="Self.TuitionTypes" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Batch_Grades" Association="Self.FK_Batch_Grades">
+            <End Role="Grades" EntitySet="Grades" />
+            <End Role="Batches" EntitySet="Batches" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Batch_TimeYears" Association="Self.FK_Batch_TimeYears">
+            <End Role="TimeYears" EntitySet="TimeYears" />
+            <End Role="Batches" EntitySet="Batches" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BatchEnrollments_Batch" Association="Self.FK_BatchEnrollments_Batch">
+            <End Role="Batches" EntitySet="Batches" />
+            <End Role="BatchEnrollments" EntitySet="BatchEnrollments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BatchEnrollments_EnrollmentType" Association="Self.FK_BatchEnrollments_EnrollmentType">
+            <End Role="EnrollmentTypes" EntitySet="EnrollmentTypes" />
+            <End Role="BatchEnrollments" EntitySet="BatchEnrollments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BatchEnrollments_Grades" Association="Self.FK_BatchEnrollments_Grades">
+            <End Role="Grades" EntitySet="Grades" />
+            <End Role="BatchEnrollments" EntitySet="BatchEnrollments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BatchEnrollments_Students" Association="Self.FK_BatchEnrollments_Students">
+            <End Role="Students" EntitySet="Students" />
+            <End Role="BatchEnrollments" EntitySet="BatchEnrollments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BatchEnrollments_TimeYears" Association="Self.FK_BatchEnrollments_TimeYears">
+            <End Role="TimeYears" EntitySet="TimeYears" />
+            <End Role="BatchEnrollments" EntitySet="BatchEnrollments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CourseDisciplines_Courses" Association="Self.FK_CourseDisciplines_Courses">
+            <End Role="Courses" EntitySet="Courses" />
+            <End Role="CourseDisciplines" EntitySet="CourseDisciplines" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CourseDisciplines_Disciplines" Association="Self.FK_CourseDisciplines_Disciplines">
+            <End Role="Disciplines" EntitySet="Disciplines" />
+            <End Role="CourseDisciplines" EntitySet="CourseDisciplines" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CourseDisciplines_Grades" Association="Self.FK_CourseDisciplines_Grades">
+            <End Role="Grades" EntitySet="Grades" />
+            <End Role="CourseDisciplines" EntitySet="CourseDisciplines" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CourseDisciplines_OfferedCourses" Association="Self.FK_CourseDisciplines_OfferedCourses">
+            <End Role="OfferedCourses" EntitySet="OfferedCourses" />
+            <End Role="CourseDisciplines" EntitySet="CourseDisciplines" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CourseDisciplines_OfferedDisciplines" Association="Self.FK_CourseDisciplines_OfferedDisciplines">
+            <End Role="OfferedDisciplines" EntitySet="OfferedDisciplines" />
+            <End Role="CourseDisciplines" EntitySet="CourseDisciplines" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CourseDisciplines_SemesterBatch" Association="Self.FK_CourseDisciplines_SemesterBatch">
+            <End Role="SemesterBatches" EntitySet="SemesterBatches" />
+            <End Role="CourseDisciplines" EntitySet="CourseDisciplines" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CourseDisciplines_Semesters" Association="Self.FK_CourseDisciplines_Semesters">
+            <End Role="Semesters" EntitySet="Semesters" />
+            <End Role="CourseDisciplines" EntitySet="CourseDisciplines" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CourseDisciplines_TimeYears" Association="Self.FK_CourseDisciplines_TimeYears">
+            <End Role="TimeYears" EntitySet="TimeYears" />
+            <End Role="CourseDisciplines" EntitySet="CourseDisciplines" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CourseEnrollments_Courses" Association="Self.FK_CourseEnrollments_Courses">
+            <End Role="Courses" EntitySet="Courses" />
+            <End Role="CourseEnrollments" EntitySet="CourseEnrollments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CourseEnrollments_Grades" Association="Self.FK_CourseEnrollments_Grades">
+            <End Role="Grades" EntitySet="Grades" />
+            <End Role="CourseEnrollments" EntitySet="CourseEnrollments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CourseEnrollments_OfferedCourses" Association="Self.FK_CourseEnrollments_OfferedCourses">
+            <End Role="OfferedCourses" EntitySet="OfferedCourses" />
+            <End Role="CourseEnrollments" EntitySet="CourseEnrollments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CourseEnrollments_SemesterBatchEnrollments" Association="Self.FK_CourseEnrollments_SemesterBatchEnrollments">
+            <End Role="SemesterBatchEnrollments" EntitySet="SemesterBatchEnrollments" />
+            <End Role="CourseEnrollments" EntitySet="CourseEnrollments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CourseEnrollments_Semesters" Association="Self.FK_CourseEnrollments_Semesters">
+            <End Role="Semesters" EntitySet="Semesters" />
+            <End Role="CourseEnrollments" EntitySet="CourseEnrollments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CourseEnrollments_Students" Association="Self.FK_CourseEnrollments_Students">
+            <End Role="Students" EntitySet="Students" />
+            <End Role="CourseEnrollments" EntitySet="CourseEnrollments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CourseEnrollments_TimeYears" Association="Self.FK_CourseEnrollments_TimeYears">
+            <End Role="TimeYears" EntitySet="TimeYears" />
+            <End Role="CourseEnrollments" EntitySet="CourseEnrollments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CourseTeachers_Disciplines" Association="Self.FK_CourseTeachers_Disciplines">
+            <End Role="Courses" EntitySet="Courses" />
+            <End Role="CourseTeachers" EntitySet="CourseTeachers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CourseTeachers_Grades" Association="Self.FK_CourseTeachers_Grades">
+            <End Role="Grades" EntitySet="Grades" />
+            <End Role="CourseTeachers" EntitySet="CourseTeachers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CourseTeachers_OfferedCourses" Association="Self.FK_CourseTeachers_OfferedCourses">
+            <End Role="OfferedCourses" EntitySet="OfferedCourses" />
+            <End Role="CourseTeachers" EntitySet="CourseTeachers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CourseTeachers_Semesters" Association="Self.FK_CourseTeachers_Semesters">
+            <End Role="Semesters" EntitySet="Semesters" />
+            <End Role="CourseTeachers" EntitySet="CourseTeachers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CourseTeachers_Teachers" Association="Self.FK_CourseTeachers_Teachers">
+            <End Role="Teachers" EntitySet="Teachers" />
+            <End Role="CourseTeachers" EntitySet="CourseTeachers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CourseTeachers_TimeYears" Association="Self.FK_CourseTeachers_TimeYears">
+            <End Role="TimeYears" EntitySet="TimeYears" />
+            <End Role="CourseTeachers" EntitySet="CourseTeachers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CourseTeachers_TuitionType" Association="Self.FK_CourseTeachers_TuitionType">
+            <End Role="TuitionTypes" EntitySet="TuitionTypes" />
+            <End Role="CourseTeachers" EntitySet="CourseTeachers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GPAwRecomm_Batch" Association="Self.FK_GPAwRecomm_Batch">
+            <End Role="Batches" EntitySet="Batches" />
+            <End Role="GPAwRecomm" EntitySet="GPAwRecomm" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GPAwRecomm_BatchEnrollments" Association="Self.FK_GPAwRecomm_BatchEnrollments">
+            <End Role="BatchEnrollments" EntitySet="BatchEnrollments" />
+            <End Role="GPAwRecomm" EntitySet="GPAwRecomm" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GPAwRecomm_CRecommendations" Association="Self.FK_GPAwRecomm_CRecommendations">
+            <End Role="RecommendationTypes" EntitySet="RecommendationTypes" />
+            <End Role="GPAwRecomm" EntitySet="GPAwRecomm" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GPAwRecomm_Grades" Association="Self.FK_GPAwRecomm_Grades">
+            <End Role="Grades" EntitySet="Grades" />
+            <End Role="GPAwRecomm" EntitySet="GPAwRecomm" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GPAwRecomm_Recommendations" Association="Self.FK_GPAwRecomm_Recommendations">
+            <End Role="RecommendationTypes" EntitySet="RecommendationTypes" />
+            <End Role="GPAwRecomm" EntitySet="GPAwRecomm" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GPAwRecomm_Students" Association="Self.FK_GPAwRecomm_Students">
+            <End Role="Students" EntitySet="Students" />
+            <End Role="GPAwRecomm" EntitySet="GPAwRecomm" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GPAwRecomm_TimeYears" Association="Self.FK_GPAwRecomm_TimeYears">
+            <End Role="TimeYears" EntitySet="TimeYears" />
+            <End Role="GPAwRecomm" EntitySet="GPAwRecomm" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MarksExamCW_CourseEnrollment" Association="Self.FK_MarksExamCW_CourseEnrollment">
+            <End Role="CourseEnrollments" EntitySet="CourseEnrollments" />
+            <End Role="MarksExamCW" EntitySet="MarksExamCW" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MarksExamCW_Courses" Association="Self.FK_MarksExamCW_Courses">
+            <End Role="Courses" EntitySet="Courses" />
+            <End Role="MarksExamCW" EntitySet="MarksExamCW" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MarksExamCW_Grades" Association="Self.FK_MarksExamCW_Grades">
+            <End Role="Grades" EntitySet="Grades" />
+            <End Role="MarksExamCW" EntitySet="MarksExamCW" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MarksExamCW_OfferedCourse" Association="Self.FK_MarksExamCW_OfferedCourse">
+            <End Role="OfferedCourses" EntitySet="OfferedCourses" />
+            <End Role="MarksExamCW" EntitySet="MarksExamCW" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MarksExamCW_Semesters" Association="Self.FK_MarksExamCW_Semesters">
+            <End Role="Semesters" EntitySet="Semesters" />
+            <End Role="MarksExamCW" EntitySet="MarksExamCW" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MarksExamCW_Students" Association="Self.FK_MarksExamCW_Students">
+            <End Role="Students" EntitySet="Students" />
+            <End Role="MarksExamCW" EntitySet="MarksExamCW" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MarksExamCW_TimeYears" Association="Self.FK_MarksExamCW_TimeYears">
+            <End Role="TimeYears" EntitySet="TimeYears" />
+            <End Role="MarksExamCW" EntitySet="MarksExamCW" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OfferedCourses_Courses" Association="Self.FK_OfferedCourses_Courses">
+            <End Role="Courses" EntitySet="Courses" />
+            <End Role="OfferedCourses" EntitySet="OfferedCourses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OfferedCourses_Grades" Association="Self.FK_OfferedCourses_Grades">
+            <End Role="Grades" EntitySet="Grades" />
+            <End Role="OfferedCourses" EntitySet="OfferedCourses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OfferedCourses_SemesterBatch" Association="Self.FK_OfferedCourses_SemesterBatch">
+            <End Role="SemesterBatches" EntitySet="SemesterBatches" />
+            <End Role="OfferedCourses" EntitySet="OfferedCourses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OfferedCourses_Semesters" Association="Self.FK_OfferedCourses_Semesters">
+            <End Role="Semesters" EntitySet="Semesters" />
+            <End Role="OfferedCourses" EntitySet="OfferedCourses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OfferedCourses_TimeYears" Association="Self.FK_OfferedCourses_TimeYears">
+            <End Role="TimeYears" EntitySet="TimeYears" />
+            <End Role="OfferedCourses" EntitySet="OfferedCourses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OfferedDisciplines_Disciplines" Association="Self.FK_OfferedDisciplines_Disciplines">
+            <End Role="Disciplines" EntitySet="Disciplines" />
+            <End Role="OfferedDisciplines" EntitySet="OfferedDisciplines" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OfferedDisciplines_Grades" Association="Self.FK_OfferedDisciplines_Grades">
+            <End Role="Grades" EntitySet="Grades" />
+            <End Role="OfferedDisciplines" EntitySet="OfferedDisciplines" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OfferedDisciplines_SemesterBatch" Association="Self.FK_OfferedDisciplines_SemesterBatch">
+            <End Role="SemesterBatches" EntitySet="SemesterBatches" />
+            <End Role="OfferedDisciplines" EntitySet="OfferedDisciplines" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OfferedDisciplines_Semesters" Association="Self.FK_OfferedDisciplines_Semesters">
+            <End Role="Semesters" EntitySet="Semesters" />
+            <End Role="OfferedDisciplines" EntitySet="OfferedDisciplines" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OfferedDisciplines_TimeYears" Association="Self.FK_OfferedDisciplines_TimeYears">
+            <End Role="TimeYears" EntitySet="TimeYears" />
+            <End Role="OfferedDisciplines" EntitySet="OfferedDisciplines" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SemesterBatch_Batch" Association="Self.FK_SemesterBatch_Batch">
+            <End Role="Batches" EntitySet="Batches" />
+            <End Role="SemesterBatches" EntitySet="SemesterBatches" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SemesterBatch_Grades" Association="Self.FK_SemesterBatch_Grades">
+            <End Role="Grades" EntitySet="Grades" />
+            <End Role="SemesterBatches" EntitySet="SemesterBatches" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SemesterBatch_Semesters" Association="Self.FK_SemesterBatch_Semesters">
+            <End Role="Semesters" EntitySet="Semesters" />
+            <End Role="SemesterBatches" EntitySet="SemesterBatches" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SemesterBatch_TimeYears" Association="Self.FK_SemesterBatch_TimeYears">
+            <End Role="TimeYears" EntitySet="TimeYears" />
+            <End Role="SemesterBatches" EntitySet="SemesterBatches" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SemesterBatchEnrollments_BatchEnrollments" Association="Self.FK_SemesterBatchEnrollments_BatchEnrollments">
+            <End Role="BatchEnrollments" EntitySet="BatchEnrollments" />
+            <End Role="SemesterBatchEnrollments" EntitySet="SemesterBatchEnrollments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SemesterBatchEnrollments_Disciplines" Association="Self.FK_SemesterBatchEnrollments_Disciplines">
+            <End Role="Disciplines" EntitySet="Disciplines" />
+            <End Role="SemesterBatchEnrollments" EntitySet="SemesterBatchEnrollments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SemesterBatchEnrollments_Grades" Association="Self.FK_SemesterBatchEnrollments_Grades">
+            <End Role="Grades" EntitySet="Grades" />
+            <End Role="SemesterBatchEnrollments" EntitySet="SemesterBatchEnrollments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SemesterBatchEnrollments_OfferedDisciplines" Association="Self.FK_SemesterBatchEnrollments_OfferedDisciplines">
+            <End Role="OfferedDisciplines" EntitySet="OfferedDisciplines" />
+            <End Role="SemesterBatchEnrollments" EntitySet="SemesterBatchEnrollments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SemesterBatchEnrollments_SemesterBatches" Association="Self.FK_SemesterBatchEnrollments_SemesterBatches">
+            <End Role="SemesterBatches" EntitySet="SemesterBatches" />
+            <End Role="SemesterBatchEnrollments" EntitySet="SemesterBatchEnrollments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SemesterBatchEnrollments_Semesters" Association="Self.FK_SemesterBatchEnrollments_Semesters">
+            <End Role="Semesters" EntitySet="Semesters" />
+            <End Role="SemesterBatchEnrollments" EntitySet="SemesterBatchEnrollments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SemesterBatchEnrollments_Students" Association="Self.FK_SemesterBatchEnrollments_Students">
+            <End Role="Students" EntitySet="Students" />
+            <End Role="SemesterBatchEnrollments" EntitySet="SemesterBatchEnrollments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SemesterBatchEnrollments_TimeYears" Association="Self.FK_SemesterBatchEnrollments_TimeYears">
+            <End Role="TimeYears" EntitySet="TimeYears" />
+            <End Role="SemesterBatchEnrollments" EntitySet="SemesterBatchEnrollments" />
+          </AssociationSet>
+          <AssociationSet Name="RecommTranslations_RecommendationTypes" Association="Self.RecommTranslations_RecommendationTypes">
+            <End Role="RecommendationTypes" EntitySet="RecommendationTypes" />
+            <End Role="RecommTranslations" EntitySet="RecommTranslations" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AcademicResultsDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="BatchEnrollment">
+          <Key>
+            <PropertyRef Name="YearId" />
+            <PropertyRef Name="GradeId" />
+            <PropertyRef Name="StudentId" />
+          </Key>
+          <Property Name="YearId" Type="Int32" Nullable="false" />
+          <Property Name="GradeId" Type="Int32" Nullable="false" />
+          <Property Name="StudentId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Grade" Relationship="Self.FK_BatchEnrollments_Grades" FromRole="BatchEnrollments" ToRole="Grades" />
+          <NavigationProperty Name="Student" Relationship="Self.FK_BatchEnrollments_Students" FromRole="BatchEnrollments" ToRole="Students" />
+          <NavigationProperty Name="TimeYear" Relationship="Self.FK_BatchEnrollments_TimeYears" FromRole="BatchEnrollments" ToRole="TimeYears" />
+          <NavigationProperty Name="SemesterBatchEnrollments" Relationship="Self.FK_SemesterBatchEnrollments_BatchEnrollments" FromRole="BatchEnrollments" ToRole="SemesterBatchEnrollments" />
+          <NavigationProperty Name="Batch" Relationship="AcademicResultsDBModel.FK_BatchEnrollments_Batch" FromRole="BatchEnrollment" ToRole="Batch" />
+          <Property Name="EnrollmentTypeId" Type="Int32" Nullable="false" DefaultValue="1" />
+          <NavigationProperty Name="EnrollmentType" Relationship="AcademicResultsDBModel.FK_BatchEnrollments_EnrollmentType" FromRole="BatchEnrollment" ToRole="EnrollmentType" />
+          <NavigationProperty Name="GPAwRecomm" Relationship="AcademicResultsDBModel.FK_GPAwRecomm_BatchEnrollments" FromRole="BatchEnrollment" ToRole="GPAwRecomm" />
+        </EntityType>
+        <EntityType Name="CourseDiscipline">
+          <Key>
+            <PropertyRef Name="YearId" />
+            <PropertyRef Name="GradeId" />
+            <PropertyRef Name="SemesterId" />
+            <PropertyRef Name="CourseId" />
+            <PropertyRef Name="DisciplineId" />
+          </Key>
+          <Property Name="YearId" Type="Int32" Nullable="false" />
+          <Property Name="GradeId" Type="Int32" Nullable="false" />
+          <Property Name="SemesterId" Type="Int32" Nullable="false" />
+          <Property Name="CourseId" Type="Int32" Nullable="false" />
+          <Property Name="DisciplineId" Type="Int32" Nullable="false" />
+          <Property Name="Optional" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Course" Relationship="Self.FK_CourseDisciplines_Courses" FromRole="CourseDisciplines" ToRole="Courses" />
+          <NavigationProperty Name="Discipline" Relationship="Self.FK_CourseDisciplines_Disciplines" FromRole="CourseDisciplines" ToRole="Disciplines" />
+          <NavigationProperty Name="Grade" Relationship="Self.FK_CourseDisciplines_Grades" FromRole="CourseDisciplines" ToRole="Grades" />
+          <NavigationProperty Name="OfferedCourse" Relationship="Self.FK_CourseDisciplines_OfferedCourses" FromRole="CourseDisciplines" ToRole="OfferedCourses" />
+          <NavigationProperty Name="OfferedDiscipline" Relationship="Self.FK_CourseDisciplines_OfferedDisciplines" FromRole="CourseDisciplines" ToRole="OfferedDisciplines" />
+          <NavigationProperty Name="SemesterBatch" Relationship="Self.FK_CourseDisciplines_SemesterBatch" FromRole="CourseDisciplines" ToRole="SemesterBatches" />
+          <NavigationProperty Name="Semester" Relationship="Self.FK_CourseDisciplines_Semesters" FromRole="CourseDisciplines" ToRole="Semesters" />
+          <NavigationProperty Name="TimeYear" Relationship="Self.FK_CourseDisciplines_TimeYears" FromRole="CourseDisciplines" ToRole="TimeYears" />
+        </EntityType>
+        <EntityType Name="CourseEnrollment">
+          <Key>
+            <PropertyRef Name="YearId" />
+            <PropertyRef Name="GradeId" />
+            <PropertyRef Name="SemesterId" />
+            <PropertyRef Name="StudentId" />
+            <PropertyRef Name="CourseId" />
+          </Key>
+          <Property Name="YearId" Type="Int32" Nullable="false" />
+          <Property Name="GradeId" Type="Int32" Nullable="false" />
+          <Property Name="SemesterId" Type="Int32" Nullable="false" />
+          <Property Name="StudentId" Type="Int32" Nullable="false" />
+          <Property Name="CourseId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Cours" Relationship="Self.FK_CourseEnrollments_Courses" FromRole="CourseEnrollments" ToRole="Courses" />
+          <NavigationProperty Name="Grade" Relationship="Self.FK_CourseEnrollments_Grades" FromRole="CourseEnrollments" ToRole="Grades" />
+          <NavigationProperty Name="OfferedCourse" Relationship="Self.FK_CourseEnrollments_OfferedCourses" FromRole="CourseEnrollments" ToRole="OfferedCourses" />
+          <NavigationProperty Name="SemesterBatchEnrollment" Relationship="Self.FK_CourseEnrollments_SemesterBatchEnrollments" FromRole="CourseEnrollments" ToRole="SemesterBatchEnrollments" />
+          <NavigationProperty Name="Semester" Relationship="Self.FK_CourseEnrollments_Semesters" FromRole="CourseEnrollments" ToRole="Semesters" />
+          <NavigationProperty Name="Student" Relationship="Self.FK_CourseEnrollments_Students" FromRole="CourseEnrollments" ToRole="Students" />
+          <NavigationProperty Name="TimeYear" Relationship="Self.FK_CourseEnrollments_TimeYears" FromRole="CourseEnrollments" ToRole="TimeYears" />
+          <NavigationProperty Name="MarksExamCW" Relationship="AcademicResultsDBModel.FK_MarksExamCW_CourseEnrollment" FromRole="CourseEnrollment" ToRole="MarksExamCW" />
+        </EntityType>
+        <EntityType Name="Course">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CourseCode" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="TitleArabic" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TitleEnglish" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CourseDisciplines" Relationship="Self.FK_CourseDisciplines_Courses" FromRole="Courses" ToRole="CourseDisciplines" />
+          <NavigationProperty Name="CourseEnrollments" Relationship="Self.FK_CourseEnrollments_Courses" FromRole="Courses" ToRole="CourseEnrollments" />
+          <NavigationProperty Name="CourseTeachers" Relationship="Self.FK_CourseTeachers_Disciplines" FromRole="Courses" ToRole="CourseTeachers" />
+          <NavigationProperty Name="OfferedCourses" Relationship="Self.FK_OfferedCourses_Courses" FromRole="Courses" ToRole="OfferedCourses" />
+          <NavigationProperty Name="MarksExamCWs" Relationship="AcademicResultsDBModel.FK_MarksExamCW_Courses" FromRole="Course" ToRole="MarksExamCW" />
+        </EntityType>
+        <EntityType Name="CourseTeacher">
+          <Key>
+            <PropertyRef Name="YearId" />
+            <PropertyRef Name="GradeId" />
+            <PropertyRef Name="SemesterId" />
+            <PropertyRef Name="CourseId" />
+            <PropertyRef Name="TeacherId" />
+            <PropertyRef Name="TuitionTypeId" />
+          </Key>
+          <Property Name="YearId" Type="Int32" Nullable="false" />
+          <Property Name="GradeId" Type="Int32" Nullable="false" />
+          <Property Name="SemesterId" Type="Int32" Nullable="false" />
+          <Property Name="CourseId" Type="Int32" Nullable="false" />
+          <Property Name="TeacherId" Type="Int32" Nullable="false" />
+          <Property Name="TuitionTypeId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Cours" Relationship="Self.FK_CourseTeachers_Disciplines" FromRole="CourseTeachers" ToRole="Courses" />
+          <NavigationProperty Name="Grade" Relationship="Self.FK_CourseTeachers_Grades" FromRole="CourseTeachers" ToRole="Grades" />
+          <NavigationProperty Name="OfferedCourse" Relationship="Self.FK_CourseTeachers_OfferedCourses" FromRole="CourseTeachers" ToRole="OfferedCourses" />
+          <NavigationProperty Name="Semester" Relationship="Self.FK_CourseTeachers_Semesters" FromRole="CourseTeachers" ToRole="Semesters" />
+          <NavigationProperty Name="Teacher" Relationship="Self.FK_CourseTeachers_Teachers" FromRole="CourseTeachers" ToRole="Teachers" />
+          <NavigationProperty Name="TimeYear" Relationship="Self.FK_CourseTeachers_TimeYears" FromRole="CourseTeachers" ToRole="TimeYears" />
+          <NavigationProperty Name="TuitionType" Relationship="Self.FK_CourseTeachers_TuitionType" FromRole="CourseTeachers" ToRole="TuitionTypes" />
+        </EntityType>
+        <EntityType Name="Discipline">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameEnglish" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NameArabic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NameEnglishShort" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NameArabicShort" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CourseDisciplines" Relationship="Self.FK_CourseDisciplines_Disciplines" FromRole="Disciplines" ToRole="CourseDisciplines" />
+          <NavigationProperty Name="OfferedDisciplines" Relationship="Self.FK_OfferedDisciplines_Disciplines" FromRole="Disciplines" ToRole="OfferedDisciplines" />
+          <NavigationProperty Name="SemesterBatchEnrollments" Relationship="Self.FK_SemesterBatchEnrollments_Disciplines" FromRole="Disciplines" ToRole="SemesterBatchEnrollments" />
+        </EntityType>
+        <EntityType Name="EnrollmentType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="NameArabic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NameEnglish" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="BatchEnrollments" Relationship="AcademicResultsDBModel.FK_BatchEnrollments_EnrollmentType" FromRole="EnrollmentType" ToRole="BatchEnrollment" />
+        </EntityType>
+        <EntityType Name="ExamType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="NameArabic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NameEnglish" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Grade">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameEnglish" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NameArabic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="BatchEnrollments" Relationship="Self.FK_BatchEnrollments_Grades" FromRole="Grades" ToRole="BatchEnrollments" />
+          <NavigationProperty Name="CourseDisciplines" Relationship="Self.FK_CourseDisciplines_Grades" FromRole="Grades" ToRole="CourseDisciplines" />
+          <NavigationProperty Name="CourseEnrollments" Relationship="Self.FK_CourseEnrollments_Grades" FromRole="Grades" ToRole="CourseEnrollments" />
+          <NavigationProperty Name="CourseTeachers" Relationship="Self.FK_CourseTeachers_Grades" FromRole="Grades" ToRole="CourseTeachers" />
+          <NavigationProperty Name="OfferedCourses" Relationship="Self.FK_OfferedCourses_Grades" FromRole="Grades" ToRole="OfferedCourses" />
+          <NavigationProperty Name="OfferedDisciplines" Relationship="Self.FK_OfferedDisciplines_Grades" FromRole="Grades" ToRole="OfferedDisciplines" />
+          <NavigationProperty Name="SemesterBatches" Relationship="Self.FK_SemesterBatch_Grades" FromRole="Grades" ToRole="SemesterBatches" />
+          <NavigationProperty Name="SemesterBatchEnrollments" Relationship="Self.FK_SemesterBatchEnrollments_Grades" FromRole="Grades" ToRole="SemesterBatchEnrollments" />
+          <NavigationProperty Name="Batches" Relationship="AcademicResultsDBModel.FK_Batch_Grades" FromRole="Grade" ToRole="Batch" />
+          <NavigationProperty Name="MarksExamCWs" Relationship="AcademicResultsDBModel.FK_MarksExamCW_Grades" FromRole="Grade" ToRole="MarksExamCW" />
+          <NavigationProperty Name="GPAwRecomms" Relationship="AcademicResultsDBModel.FK_GPAwRecomm_Grades" FromRole="Grade" ToRole="GPAwRecomm" />
+        </EntityType>
+        <EntityType Name="OfferedCourse">
+          <Key>
+            <PropertyRef Name="YearId" />
+            <PropertyRef Name="GradeId" />
+            <PropertyRef Name="SemesterId" />
+            <PropertyRef Name="CourseId" />
+          </Key>
+          <Property Name="YearId" Type="Int32" Nullable="false" />
+          <Property Name="GradeId" Type="Int32" Nullable="false" />
+          <Property Name="SemesterId" Type="Int32" Nullable="false" />
+          <Property Name="CourseId" Type="Int32" Nullable="false" />
+          <Property Name="ExamFraction" Type="Int32" Nullable="false" />
+          <Property Name="CourseWorkFraction" Type="Int32" Nullable="false" />
+          <Property Name="CreditHours" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CourseDisciplines" Relationship="Self.FK_CourseDisciplines_OfferedCourses" FromRole="OfferedCourses" ToRole="CourseDisciplines" />
+          <NavigationProperty Name="CourseEnrollments" Relationship="Self.FK_CourseEnrollments_OfferedCourses" FromRole="OfferedCourses" ToRole="CourseEnrollments" />
+          <NavigationProperty Name="Course" Relationship="Self.FK_OfferedCourses_Courses" FromRole="OfferedCourses" ToRole="Courses" />
+          <NavigationProperty Name="CourseTeachers" Relationship="Self.FK_CourseTeachers_OfferedCourses" FromRole="OfferedCourses" ToRole="CourseTeachers" />
+          <NavigationProperty Name="Grade" Relationship="Self.FK_OfferedCourses_Grades" FromRole="OfferedCourses" ToRole="Grades" />
+          <NavigationProperty Name="SemesterBatch" Relationship="Self.FK_OfferedCourses_SemesterBatch" FromRole="OfferedCourses" ToRole="SemesterBatches" />
+          <NavigationProperty Name="Semester" Relationship="Self.FK_OfferedCourses_Semesters" FromRole="OfferedCourses" ToRole="Semesters" />
+          <NavigationProperty Name="TimeYear" Relationship="Self.FK_OfferedCourses_TimeYears" FromRole="OfferedCourses" ToRole="TimeYears" />
+          <NavigationProperty Name="MarksExamCWs" Relationship="AcademicResultsDBModel.FK_MarksExamCW_OfferedCourse" FromRole="OfferedCourse" ToRole="MarksExamCW" />
+        </EntityType>
+        <EntityType Name="OfferedDiscipline">
+          <Key>
+            <PropertyRef Name="YearId" />
+            <PropertyRef Name="GradeId" />
+            <PropertyRef Name="SemesterId" />
+            <PropertyRef Name="DisciplineId" />
+          </Key>
+          <Property Name="YearId" Type="Int32" Nullable="false" />
+          <Property Name="GradeId" Type="Int32" Nullable="false" />
+          <Property Name="SemesterId" Type="Int32" Nullable="false" />
+          <Property Name="DisciplineId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CourseDisciplines" Relationship="Self.FK_CourseDisciplines_OfferedDisciplines" FromRole="OfferedDisciplines" ToRole="CourseDisciplines" />
+          <NavigationProperty Name="Discipline" Relationship="Self.FK_OfferedDisciplines_Disciplines" FromRole="OfferedDisciplines" ToRole="Disciplines" />
+          <NavigationProperty Name="Grade" Relationship="Self.FK_OfferedDisciplines_Grades" FromRole="OfferedDisciplines" ToRole="Grades" />
+          <NavigationProperty Name="SemesterBatch" Relationship="Self.FK_OfferedDisciplines_SemesterBatch" FromRole="OfferedDisciplines" ToRole="SemesterBatches" />
+          <NavigationProperty Name="Semester" Relationship="Self.FK_OfferedDisciplines_Semesters" FromRole="OfferedDisciplines" ToRole="Semesters" />
+          <NavigationProperty Name="TimeYear" Relationship="Self.FK_OfferedDisciplines_TimeYears" FromRole="OfferedDisciplines" ToRole="TimeYears" />
+          <NavigationProperty Name="SemesterBatchEnrollments" Relationship="Self.FK_SemesterBatchEnrollments_OfferedDisciplines" FromRole="OfferedDisciplines" ToRole="SemesterBatchEnrollments" />
+        </EntityType>
+        <EntityType Name="RecommendationType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="NameArabic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NameEnglish" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Pass" Type="Boolean" Nullable="false" />
+          <Property Name="ShortNameEnglish" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="GPAwRecomms" Relationship="AcademicResultsDBModel.FK_GPAwRecomm_CRecommendations" FromRole="RecommendationType" ToRole="GPAwRecomm" />
+          <NavigationProperty Name="GPAwRecomms1" Relationship="AcademicResultsDBModel.FK_GPAwRecomm_Recommendations" FromRole="RecommendationType" ToRole="GPAwRecomm" />
+          <NavigationProperty Name="RecommTranslations" Relationship="AcademicResultsDBModel.RecommTranslations_RecommendationTypes" FromRole="RecommendationType" ToRole="RecommTranslation" />
+        </EntityType>
+        <EntityType Name="SemesterBatchEnrollment">
+          <Key>
+            <PropertyRef Name="YearId" />
+            <PropertyRef Name="GradeId" />
+            <PropertyRef Name="SemesterId" />
+            <PropertyRef Name="StudentId" />
+          </Key>
+          <Property Name="YearId" Type="Int32" Nullable="false" />
+          <Property Name="GradeId" Type="Int32" Nullable="false" />
+          <Property Name="SemesterId" Type="Int32" Nullable="false" />
+          <Property Name="StudentId" Type="Int32" Nullable="false" />
+          <Property Name="DisciplineId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="BatchEnrollment" Relationship="Self.FK_SemesterBatchEnrollments_BatchEnrollments" FromRole="SemesterBatchEnrollments" ToRole="BatchEnrollments" />
+          <NavigationProperty Name="CourseEnrollments" Relationship="Self.FK_CourseEnrollments_SemesterBatchEnrollments" FromRole="SemesterBatchEnrollments" ToRole="CourseEnrollments" />
+          <NavigationProperty Name="Discipline" Relationship="Self.FK_SemesterBatchEnrollments_Disciplines" FromRole="SemesterBatchEnrollments" ToRole="Disciplines" />
+          <NavigationProperty Name="Grade" Relationship="Self.FK_SemesterBatchEnrollments_Grades" FromRole="SemesterBatchEnrollments" ToRole="Grades" />
+          <NavigationProperty Name="OfferedDiscipline" Relationship="Self.FK_SemesterBatchEnrollments_OfferedDisciplines" FromRole="SemesterBatchEnrollments" ToRole="OfferedDisciplines" />
+          <NavigationProperty Name="SemesterBatch" Relationship="Self.FK_SemesterBatchEnrollments_SemesterBatches" FromRole="SemesterBatchEnrollments" ToRole="SemesterBatches" />
+          <NavigationProperty Name="Semester" Relationship="Self.FK_SemesterBatchEnrollments_Semesters" FromRole="SemesterBatchEnrollments" ToRole="Semesters" />
+          <NavigationProperty Name="Student" Relationship="Self.FK_SemesterBatchEnrollments_Students" FromRole="SemesterBatchEnrollments" ToRole="Students" />
+          <NavigationProperty Name="TimeYear" Relationship="Self.FK_SemesterBatchEnrollments_TimeYears" FromRole="SemesterBatchEnrollments" ToRole="TimeYears" />
+        </EntityType>
+        <EntityType Name="SemesterBatch">
+          <Key>
+            <PropertyRef Name="YearId" />
+            <PropertyRef Name="GradeId" />
+            <PropertyRef Name="SemesterId" />
+          </Key>
+          <Property Name="YearId" Type="Int32" Nullable="false" />
+          <Property Name="GradeId" Type="Int32" Nullable="false" />
+          <Property Name="SemesterId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CourseDisciplines" Relationship="Self.FK_CourseDisciplines_SemesterBatch" FromRole="SemesterBatches" ToRole="CourseDisciplines" />
+          <NavigationProperty Name="Grade" Relationship="Self.FK_SemesterBatch_Grades" FromRole="SemesterBatches" ToRole="Grades" />
+          <NavigationProperty Name="OfferedCourses" Relationship="Self.FK_OfferedCourses_SemesterBatch" FromRole="SemesterBatches" ToRole="OfferedCourses" />
+          <NavigationProperty Name="OfferedDisciplines" Relationship="Self.FK_OfferedDisciplines_SemesterBatch" FromRole="SemesterBatches" ToRole="OfferedDisciplines" />
+          <NavigationProperty Name="SemesterBatchEnrollments" Relationship="Self.FK_SemesterBatchEnrollments_SemesterBatches" FromRole="SemesterBatches" ToRole="SemesterBatchEnrollments" />
+          <NavigationProperty Name="Semester" Relationship="Self.FK_SemesterBatch_Semesters" FromRole="SemesterBatches" ToRole="Semesters" />
+          <NavigationProperty Name="TimeYear" Relationship="Self.FK_SemesterBatch_TimeYears" FromRole="SemesterBatches" ToRole="TimeYears" />
+          <NavigationProperty Name="Batch" Relationship="AcademicResultsDBModel.FK_SemesterBatch_Batch" FromRole="SemesterBatch" ToRole="Batch" />
+        </EntityType>
+        <EntityType Name="Semester">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="NameEnglish" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="NameArabic" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="CourseDisciplines" Relationship="Self.FK_CourseDisciplines_Semesters" FromRole="Semesters" ToRole="CourseDisciplines" />
+          <NavigationProperty Name="CourseEnrollments" Relationship="Self.FK_CourseEnrollments_Semesters" FromRole="Semesters" ToRole="CourseEnrollments" />
+          <NavigationProperty Name="CourseTeachers" Relationship="Self.FK_CourseTeachers_Semesters" FromRole="Semesters" ToRole="CourseTeachers" />
+          <NavigationProperty Name="OfferedCourses" Relationship="Self.FK_OfferedCourses_Semesters" FromRole="Semesters" ToRole="OfferedCourses" />
+          <NavigationProperty Name="OfferedDisciplines" Relationship="Self.FK_OfferedDisciplines_Semesters" FromRole="Semesters" ToRole="OfferedDisciplines" />
+          <NavigationProperty Name="SemesterBatchEnrollments" Relationship="Self.FK_SemesterBatchEnrollments_Semesters" FromRole="Semesters" ToRole="SemesterBatchEnrollments" />
+          <NavigationProperty Name="SemesterBatches" Relationship="Self.FK_SemesterBatch_Semesters" FromRole="Semesters" ToRole="SemesterBatches" />
+          <NavigationProperty Name="MarksExamCWs" Relationship="AcademicResultsDBModel.FK_MarksExamCW_Semesters" FromRole="Semester" ToRole="MarksExamCW" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Index" Type="Int32" />
+          <Property Name="UnivNo" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="NameArabic" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NameEnglish" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="BatchEnrollments" Relationship="Self.FK_BatchEnrollments_Students" FromRole="Students" ToRole="BatchEnrollments" />
+          <NavigationProperty Name="CourseEnrollments" Relationship="Self.FK_CourseEnrollments_Students" FromRole="Students" ToRole="CourseEnrollments" />
+          <NavigationProperty Name="SemesterBatchEnrollments" Relationship="Self.FK_SemesterBatchEnrollments_Students" FromRole="Students" ToRole="SemesterBatchEnrollments" />
+          <NavigationProperty Name="MarksExamCWs" Relationship="AcademicResultsDBModel.FK_MarksExamCW_Students" FromRole="Student" ToRole="MarksExamCW" />
+          <NavigationProperty Name="GPAwRecomms" Relationship="AcademicResultsDBModel.FK_GPAwRecomm_Students" FromRole="Student" ToRole="GPAwRecomm" />
+        </EntityType>
+        <EntityType Name="Teacher">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameArabic" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NameEnglish" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CourseTeachers" Relationship="Self.FK_CourseTeachers_Teachers" FromRole="Teachers" ToRole="CourseTeachers" />
+        </EntityType>
+        <EntityType Name="TimeYear">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="NameEnglish" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NameArabic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="BatchEnrollments" Relationship="Self.FK_BatchEnrollments_TimeYears" FromRole="TimeYears" ToRole="BatchEnrollments" />
+          <NavigationProperty Name="CourseDisciplines" Relationship="Self.FK_CourseDisciplines_TimeYears" FromRole="TimeYears" ToRole="CourseDisciplines" />
+          <NavigationProperty Name="CourseEnrollments" Relationship="Self.FK_CourseEnrollments_TimeYears" FromRole="TimeYears" ToRole="CourseEnrollments" />
+          <NavigationProperty Name="CourseTeachers" Relationship="Self.FK_CourseTeachers_TimeYears" FromRole="TimeYears" ToRole="CourseTeachers" />
+          <NavigationProperty Name="OfferedCourses" Relationship="Self.FK_OfferedCourses_TimeYears" FromRole="TimeYears" ToRole="OfferedCourses" />
+          <NavigationProperty Name="OfferedDisciplines" Relationship="Self.FK_OfferedDisciplines_TimeYears" FromRole="TimeYears" ToRole="OfferedDisciplines" />
+          <NavigationProperty Name="SemesterBatchEnrollments" Relationship="Self.FK_SemesterBatchEnrollments_TimeYears" FromRole="TimeYears" ToRole="SemesterBatchEnrollments" />
+          <NavigationProperty Name="SemesterBatches" Relationship="Self.FK_SemesterBatch_TimeYears" FromRole="TimeYears" ToRole="SemesterBatches" />
+          <NavigationProperty Name="Batches" Relationship="AcademicResultsDBModel.FK_Batch_TimeYears" FromRole="TimeYear" ToRole="Batch" />
+          <NavigationProperty Name="MarksExamCWs" Relationship="AcademicResultsDBModel.FK_MarksExamCW_TimeYears" FromRole="TimeYear" ToRole="MarksExamCW" />
+          <NavigationProperty Name="GPAwRecomms" Relationship="AcademicResultsDBModel.FK_GPAwRecomm_TimeYears" FromRole="TimeYear" ToRole="GPAwRecomm" />
+        </EntityType>
+        <EntityType Name="TuitionType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="NameArabic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NameEnglish" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CourseTeachers" Relationship="Self.FK_CourseTeachers_TuitionType" FromRole="TuitionTypes" ToRole="CourseTeachers" />
+        </EntityType>
+        <Association Name="FK_BatchEnrollments_Grades">
+          <End Role="Grades" Type="Self.Grade" Multiplicity="1" />
+          <End Role="BatchEnrollments" Type="Self.BatchEnrollment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Grades">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BatchEnrollments">
+              <PropertyRef Name="GradeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BatchEnrollments_Students">
+          <End Role="Students" Type="Self.Student" Multiplicity="1" />
+          <End Role="BatchEnrollments" Type="Self.BatchEnrollment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Students">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BatchEnrollments">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BatchEnrollments_TimeYears">
+          <End Role="TimeYears" Type="Self.TimeYear" Multiplicity="1" />
+          <End Role="BatchEnrollments" Type="Self.BatchEnrollment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TimeYears">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BatchEnrollments">
+              <PropertyRef Name="YearId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SemesterBatchEnrollments_BatchEnrollments">
+          <End Role="BatchEnrollments" Type="Self.BatchEnrollment" Multiplicity="1" />
+          <End Role="SemesterBatchEnrollments" Type="Self.SemesterBatchEnrollment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BatchEnrollments">
+              <PropertyRef Name="YearId" />
+              <PropertyRef Name="GradeId" />
+              <PropertyRef Name="StudentId" />
+            </Principal>
+            <Dependent Role="SemesterBatchEnrollments">
+              <PropertyRef Name="YearId" />
+              <PropertyRef Name="GradeId" />
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CourseDisciplines_Courses">
+          <End Role="Courses" Type="AcademicResultsDBModel.Course" Multiplicity="1" />
+          <End Role="CourseDisciplines" Type="Self.CourseDiscipline" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Courses">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CourseDisciplines">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CourseDisciplines_Disciplines">
+          <End Role="Disciplines" Type="Self.Discipline" Multiplicity="1" />
+          <End Role="CourseDisciplines" Type="Self.CourseDiscipline" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Disciplines">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CourseDisciplines">
+              <PropertyRef Name="DisciplineId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CourseDisciplines_Grades">
+          <End Role="Grades" Type="Self.Grade" Multiplicity="1" />
+          <End Role="CourseDisciplines" Type="Self.CourseDiscipline" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Grades">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CourseDisciplines">
+              <PropertyRef Name="GradeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CourseDisciplines_OfferedCourses">
+          <End Role="OfferedCourses" Type="AcademicResultsDBModel.OfferedCourse" Multiplicity="1" />
+          <End Role="CourseDisciplines" Type="Self.CourseDiscipline" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OfferedCourses">
+              <PropertyRef Name="YearId" />
+              <PropertyRef Name="GradeId" />
+              <PropertyRef Name="SemesterId" />
+              <PropertyRef Name="CourseId" />
+            </Principal>
+            <Dependent Role="CourseDisciplines">
+              <PropertyRef Name="YearId" />
+              <PropertyRef Name="GradeId" />
+              <PropertyRef Name="SemesterId" />
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CourseDisciplines_OfferedDisciplines">
+          <End Role="OfferedDisciplines" Type="Self.OfferedDiscipline" Multiplicity="1" />
+          <End Role="CourseDisciplines" Type="Self.CourseDiscipline" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OfferedDisciplines">
+              <PropertyRef Name="YearId" />
+              <PropertyRef Name="GradeId" />
+              <PropertyRef Name="SemesterId" />
+              <PropertyRef Name="DisciplineId" />
+            </Principal>
+            <Dependent Role="CourseDisciplines">
+              <PropertyRef Name="YearId" />
+              <PropertyRef Name="GradeId" />
+              <PropertyRef Name="SemesterId" />
+              <PropertyRef Name="DisciplineId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CourseDisciplines_SemesterBatch">
+          <End Role="SemesterBatches" Type="Self.SemesterBatch" Multiplicity="1" />
+          <End Role="CourseDisciplines" Type="Self.CourseDiscipline" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SemesterBatches">
+              <PropertyRef Name="YearId" />
+              <PropertyRef Name="GradeId" />
+              <PropertyRef Name="SemesterId" />
+            </Principal>
+            <Dependent Role="CourseDisciplines">
+              <PropertyRef Name="YearId" />
+              <PropertyRef Name="GradeId" />
+              <PropertyRef Name="SemesterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CourseDisciplines_Semesters">
+          <End Role="Semesters" Type="Self.Semester" Multiplicity="1" />
+          <End Role="CourseDisciplines" Type="Self.CourseDiscipline" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Semesters">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CourseDisciplines">
+              <PropertyRef Name="SemesterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CourseDisciplines_TimeYears">
+          <End Role="TimeYears" Type="Self.TimeYear" Multiplicity="1" />
+          <End Role="CourseDisciplines" Type="Self.CourseDiscipline" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TimeYears">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CourseDisciplines">
+              <PropertyRef Name="YearId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CourseEnrollments_Courses">
+          <End Role="Courses" Type="AcademicResultsDBModel.Course" Multiplicity="1" />
+          <End Role="CourseEnrollments" Type="Self.CourseEnrollment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Courses">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CourseEnrollments">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CourseEnrollments_Grades">
+          <End Role="Grades" Type="Self.Grade" Multiplicity="1" />
+          <End Role="CourseEnrollments" Type="Self.CourseEnrollment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Grades">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CourseEnrollments">
+              <PropertyRef Name="GradeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CourseEnrollments_OfferedCourses">
+          <End Role="OfferedCourses" Type="AcademicResultsDBModel.OfferedCourse" Multiplicity="1" />
+          <End Role="CourseEnrollments" Type="Self.CourseEnrollment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OfferedCourses">
+              <PropertyRef Name="YearId" />
+              <PropertyRef Name="GradeId" />
+              <PropertyRef Name="SemesterId" />
+              <PropertyRef Name="CourseId" />
+            </Principal>
+            <Dependent Role="CourseEnrollments">
+              <PropertyRef Name="YearId" />
+              <PropertyRef Name="GradeId" />
+              <PropertyRef Name="SemesterId" />
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CourseEnrollments_SemesterBatchEnrollments">
+          <End Role="SemesterBatchEnrollments" Type="Self.SemesterBatchEnrollment" Multiplicity="1" />
+          <End Role="CourseEnrollments" Type="Self.CourseEnrollment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SemesterBatchEnrollments">
+              <PropertyRef Name="YearId" />
+              <PropertyRef Name="GradeId" />
+              <PropertyRef Name="SemesterId" />
+              <PropertyRef Name="StudentId" />
+            </Principal>
+            <Dependent Role="CourseEnrollments">
+              <PropertyRef Name="YearId" />
+              <PropertyRef Name="GradeId" />
+              <PropertyRef Name="SemesterId" />
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CourseEnrollments_Semesters">
+          <End Role="Semesters" Type="Self.Semester" Multiplicity="1" />
+          <End Role="CourseEnrollments" Type="Self.CourseEnrollment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Semesters">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CourseEnrollments">
+              <PropertyRef Name="SemesterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CourseEnrollments_Students">
+          <End Role="Students" Type="Self.Student" Multiplicity="1" />
+          <End Role="CourseEnrollments" Type="Self.CourseEnrollment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Students">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CourseEnrollments">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CourseEnrollments_TimeYears">
+          <End Role="TimeYears" Type="Self.TimeYear" Multiplicity="1" />
+          <End Role="CourseEnrollments" Type="Self.CourseEnrollment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TimeYears">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CourseEnrollments">
+              <PropertyRef Name="YearId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CourseTeachers_Disciplines">
+          <End Role="Courses" Type="AcademicResultsDBModel.Course" Multiplicity="1" />
+          <End Role="CourseTeachers" Type="Self.CourseTeacher" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Courses">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CourseTeachers">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OfferedCourses_Courses">
+          <End Role="Courses" Type="AcademicResultsDBModel.Course" Multiplicity="1" />
+          <End Role="OfferedCourses" Type="AcademicResultsDBModel.OfferedCourse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Courses">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OfferedCourses">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CourseTeachers_Grades">
+          <End Role="Grades" Type="Self.Grade" Multiplicity="1" />
+          <End Role="CourseTeachers" Type="Self.CourseTeacher" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Grades">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CourseTeachers">
+              <PropertyRef Name="GradeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CourseTeachers_OfferedCourses">
+          <End Role="OfferedCourses" Type="AcademicResultsDBModel.OfferedCourse" Multiplicity="1" />
+          <End Role="CourseTeachers" Type="Self.CourseTeacher" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OfferedCourses">
+              <PropertyRef Name="YearId" />
+              <PropertyRef Name="GradeId" />
+              <PropertyRef Name="SemesterId" />
+              <PropertyRef Name="CourseId" />
+            </Principal>
+            <Dependent Role="CourseTeachers">
+              <PropertyRef Name="YearId" />
+              <PropertyRef Name="GradeId" />
+              <PropertyRef Name="SemesterId" />
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CourseTeachers_Semesters">
+          <End Role="Semesters" Type="Self.Semester" Multiplicity="1" />
+          <End Role="CourseTeachers" Type="Self.CourseTeacher" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Semesters">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CourseTeachers">
+              <PropertyRef Name="SemesterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CourseTeachers_Teachers">
+          <End Role="Teachers" Type="Self.Teacher" Multiplicity="1" />
+          <End Role="CourseTeachers" Type="Self.CourseTeacher" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teachers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CourseTeachers">
+              <PropertyRef Name="TeacherId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CourseTeachers_TimeYears">
+          <End Role="TimeYears" Type="Self.TimeYear" Multiplicity="1" />
+          <End Role="CourseTeachers" Type="Self.CourseTeacher" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TimeYears">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CourseTeachers">
+              <PropertyRef Name="YearId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CourseTeachers_TuitionType">
+          <End Role="TuitionTypes" Type="Self.TuitionType" Multiplicity="1" />
+          <End Role="CourseTeachers" Type="Self.CourseTeacher" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TuitionTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CourseTeachers">
+              <PropertyRef Name="TuitionTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OfferedDisciplines_Disciplines">
+          <End Role="Disciplines" Type="Self.Discipline" Multiplicity="1" />
+          <End Role="OfferedDisciplines" Type="Self.OfferedDiscipline" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Disciplines">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OfferedDisciplines">
+              <PropertyRef Name="DisciplineId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SemesterBatchEnrollments_Disciplines">
+          <End Role="Disciplines" Type="Self.Discipline" Multiplicity="1" />
+          <End Role="SemesterBatchEnrollments" Type="Self.SemesterBatchEnrollment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Disciplines">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SemesterBatchEnrollments">
+              <PropertyRef Name="DisciplineId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OfferedCourses_Grades">
+          <End Role="Grades" Type="Self.Grade" Multiplicity="1" />
+          <End Role="OfferedCourses" Type="AcademicResultsDBModel.OfferedCourse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Grades">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OfferedCourses">
+              <PropertyRef Name="GradeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OfferedDisciplines_Grades">
+          <End Role="Grades" Type="Self.Grade" Multiplicity="1" />
+          <End Role="OfferedDisciplines" Type="Self.OfferedDiscipline" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Grades">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OfferedDisciplines">
+              <PropertyRef Name="GradeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SemesterBatch_Grades">
+          <End Role="Grades" Type="Self.Grade" Multiplicity="1" />
+          <End Role="SemesterBatches" Type="Self.SemesterBatch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Grades">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SemesterBatches">
+              <PropertyRef Name="GradeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SemesterBatchEnrollments_Grades">
+          <End Role="Grades" Type="Self.Grade" Multiplicity="1" />
+          <End Role="SemesterBatchEnrollments" Type="Self.SemesterBatchEnrollment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Grades">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SemesterBatchEnrollments">
+              <PropertyRef Name="GradeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OfferedCourses_SemesterBatch">
+          <End Role="SemesterBatches" Type="Self.SemesterBatch" Multiplicity="1" />
+          <End Role="OfferedCourses" Type="AcademicResultsDBModel.OfferedCourse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SemesterBatches">
+              <PropertyRef Name="YearId" />
+              <PropertyRef Name="GradeId" />
+              <PropertyRef Name="SemesterId" />
+            </Principal>
+            <Dependent Role="OfferedCourses">
+              <PropertyRef Name="YearId" />
+              <PropertyRef Name="GradeId" />
+              <PropertyRef Name="SemesterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OfferedCourses_Semesters">
+          <End Role="Semesters" Type="Self.Semester" Multiplicity="1" />
+          <End Role="OfferedCourses" Type="AcademicResultsDBModel.OfferedCourse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Semesters">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OfferedCourses">
+              <PropertyRef Name="SemesterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OfferedCourses_TimeYears">
+          <End Role="TimeYears" Type="Self.TimeYear" Multiplicity="1" />
+          <End Role="OfferedCourses" Type="AcademicResultsDBModel.OfferedCourse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TimeYears">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OfferedCourses">
+              <PropertyRef Name="YearId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OfferedDisciplines_SemesterBatch">
+          <End Role="SemesterBatches" Type="Self.SemesterBatch" Multiplicity="1" />
+          <End Role="OfferedDisciplines" Type="Self.OfferedDiscipline" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SemesterBatches">
+              <PropertyRef Name="YearId" />
+              <PropertyRef Name="GradeId" />
+              <PropertyRef Name="SemesterId" />
+            </Principal>
+            <Dependent Role="OfferedDisciplines">
+              <PropertyRef Name="YearId" />
+              <PropertyRef Name="GradeId" />
+              <PropertyRef Name="SemesterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OfferedDisciplines_Semesters">
+          <End Role="Semesters" Type="Self.Semester" Multiplicity="1" />
+          <End Role="OfferedDisciplines" Type="Self.OfferedDiscipline" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Semesters">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OfferedDisciplines">
+              <PropertyRef Name="SemesterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OfferedDisciplines_TimeYears">
+          <End Role="TimeYears" Type="Self.TimeYear" Multiplicity="1" />
+          <End Role="OfferedDisciplines" Type="Self.OfferedDiscipline" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TimeYears">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OfferedDisciplines">
+              <PropertyRef Name="YearId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SemesterBatchEnrollments_OfferedDisciplines">
+          <End Role="OfferedDisciplines" Type="Self.OfferedDiscipline" Multiplicity="1" />
+          <End Role="SemesterBatchEnrollments" Type="Self.SemesterBatchEnrollment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OfferedDisciplines">
+              <PropertyRef Name="YearId" />
+              <PropertyRef Name="GradeId" />
+              <PropertyRef Name="SemesterId" />
+              <PropertyRef Name="DisciplineId" />
+            </Principal>
+            <Dependent Role="SemesterBatchEnrollments">
+              <PropertyRef Name="YearId" />
+              <PropertyRef Name="GradeId" />
+              <PropertyRef Name="SemesterId" />
+              <PropertyRef Name="DisciplineId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SemesterBatchEnrollments_SemesterBatches">
+          <End Role="SemesterBatches" Type="Self.SemesterBatch" Multiplicity="1" />
+          <End Role="SemesterBatchEnrollments" Type="Self.SemesterBatchEnrollment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SemesterBatches">
+              <PropertyRef Name="YearId" />
+              <PropertyRef Name="GradeId" />
+              <PropertyRef Name="SemesterId" />
+            </Principal>
+            <Dependent Role="SemesterBatchEnrollments">
+              <PropertyRef Name="YearId" />
+              <PropertyRef Name="GradeId" />
+              <PropertyRef Name="SemesterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SemesterBatchEnrollments_Semesters">
+          <End Role="Semesters" Type="Self.Semester" Multiplicity="1" />
+          <End Role="SemesterBatchEnrollments" Type="Self.SemesterBatchEnrollment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Semesters">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SemesterBatchEnrollments">
+              <PropertyRef Name="SemesterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SemesterBatchEnrollments_Students">
+          <End Role="Students" Type="Self.Student" Multiplicity="1" />
+          <End Role="SemesterBatchEnrollments" Type="Self.SemesterBatchEnrollment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Students">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SemesterBatchEnrollments">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SemesterBatchEnrollments_TimeYears">
+          <End Role="TimeYears" Type="Self.TimeYear" Multiplicity="1" />
+          <End Role="SemesterBatchEnrollments" Type="Self.SemesterBatchEnrollment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TimeYears">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SemesterBatchEnrollments">
+              <PropertyRef Name="YearId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SemesterBatch_Semesters">
+          <End Role="Semesters" Type="Self.Semester" Multiplicity="1" />
+          <End Role="SemesterBatches" Type="Self.SemesterBatch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Semesters">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SemesterBatches">
+              <PropertyRef Name="SemesterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SemesterBatch_TimeYears">
+          <End Role="TimeYears" Type="Self.TimeYear" Multiplicity="1" />
+          <End Role="SemesterBatches" Type="Self.SemesterBatch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TimeYears">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SemesterBatches">
+              <PropertyRef Name="YearId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AcademicResultsDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BatchEnrollments" EntityType="Self.BatchEnrollment" />
+          <EntitySet Name="CourseDisciplines" EntityType="Self.CourseDiscipline" />
+          <EntitySet Name="CourseEnrollments" EntityType="Self.CourseEnrollment" />
+          <EntitySet Name="Courses" EntityType="AcademicResultsDBModel.Course" />
+          <EntitySet Name="CourseTeachers" EntityType="Self.CourseTeacher" />
+          <EntitySet Name="Disciplines" EntityType="Self.Discipline" />
+          <EntitySet Name="EnrollmentTypes" EntityType="Self.EnrollmentType" />
+          <EntitySet Name="ExamTypes" EntityType="Self.ExamType" />
+          <EntitySet Name="Grades" EntityType="Self.Grade" />
+          <EntitySet Name="OfferedCourses" EntityType="AcademicResultsDBModel.OfferedCourse" />
+          <EntitySet Name="OfferedDisciplines" EntityType="Self.OfferedDiscipline" />
+          <EntitySet Name="RecommendationTypes" EntityType="Self.RecommendationType" />
+          <EntitySet Name="SemesterBatchEnrollments" EntityType="Self.SemesterBatchEnrollment" />
+          <EntitySet Name="SemesterBatches" EntityType="Self.SemesterBatch" />
+          <EntitySet Name="Semesters" EntityType="Self.Semester" />
+          <EntitySet Name="Students" EntityType="Self.Student" />
+          <EntitySet Name="Teachers" EntityType="Self.Teacher" />
+          <EntitySet Name="TimeYears" EntityType="Self.TimeYear" />
+          <EntitySet Name="TuitionTypes" EntityType="Self.TuitionType" />
+          <AssociationSet Name="FK_BatchEnrollments_Grades" Association="Self.FK_BatchEnrollments_Grades">
+            <End Role="Grades" EntitySet="Grades" />
+            <End Role="BatchEnrollments" EntitySet="BatchEnrollments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BatchEnrollments_Students" Association="Self.FK_BatchEnrollments_Students">
+            <End Role="Students" EntitySet="Students" />
+            <End Role="BatchEnrollments" EntitySet="BatchEnrollments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BatchEnrollments_TimeYears" Association="Self.FK_BatchEnrollments_TimeYears">
+            <End Role="TimeYears" EntitySet="TimeYears" />
+            <End Role="BatchEnrollments" EntitySet="BatchEnrollments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SemesterBatchEnrollments_BatchEnrollments" Association="Self.FK_SemesterBatchEnrollments_BatchEnrollments">
+            <End Role="BatchEnrollments" EntitySet="BatchEnrollments" />
+            <End Role="SemesterBatchEnrollments" EntitySet="SemesterBatchEnrollments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CourseDisciplines_Courses" Association="Self.FK_CourseDisciplines_Courses">
+            <End Role="Courses" EntitySet="Courses" />
+            <End Role="CourseDisciplines" EntitySet="CourseDisciplines" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CourseDisciplines_Disciplines" Association="Self.FK_CourseDisciplines_Disciplines">
+            <End Role="Disciplines" EntitySet="Disciplines" />
+            <End Role="CourseDisciplines" EntitySet="CourseDisciplines" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CourseDisciplines_Grades" Association="Self.FK_CourseDisciplines_Grades">
+            <End Role="Grades" EntitySet="Grades" />
+            <End Role="CourseDisciplines" EntitySet="CourseDisciplines" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CourseDisciplines_OfferedCourses" Association="Self.FK_CourseDisciplines_OfferedCourses">
+            <End Role="OfferedCourses" EntitySet="OfferedCourses" />
+            <End Role="CourseDisciplines" EntitySet="CourseDisciplines" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CourseDisciplines_OfferedDisciplines" Association="Self.FK_CourseDisciplines_OfferedDisciplines">
+            <End Role="OfferedDisciplines" EntitySet="OfferedDisciplines" />
+            <End Role="CourseDisciplines" EntitySet="CourseDisciplines" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CourseDisciplines_SemesterBatch" Association="Self.FK_CourseDisciplines_SemesterBatch">
+            <End Role="SemesterBatches" EntitySet="SemesterBatches" />
+            <End Role="CourseDisciplines" EntitySet="CourseDisciplines" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CourseDisciplines_Semesters" Association="Self.FK_CourseDisciplines_Semesters">
+            <End Role="Semesters" EntitySet="Semesters" />
+            <End Role="CourseDisciplines" EntitySet="CourseDisciplines" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CourseDisciplines_TimeYears" Association="Self.FK_CourseDisciplines_TimeYears">
+            <End Role="TimeYears" EntitySet="TimeYears" />
+            <End Role="CourseDisciplines" EntitySet="CourseDisciplines" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CourseEnrollments_Courses" Association="Self.FK_CourseEnrollments_Courses">
+            <End Role="Courses" EntitySet="Courses" />
+            <End Role="CourseEnrollments" EntitySet="CourseEnrollments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CourseEnrollments_Grades" Association="Self.FK_CourseEnrollments_Grades">
+            <End Role="Grades" EntitySet="Grades" />
+            <End Role="CourseEnrollments" EntitySet="CourseEnrollments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CourseEnrollments_OfferedCourses" Association="Self.FK_CourseEnrollments_OfferedCourses">
+            <End Role="OfferedCourses" EntitySet="OfferedCourses" />
+            <End Role="CourseEnrollments" EntitySet="CourseEnrollments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CourseEnrollments_SemesterBatchEnrollments" Association="Self.FK_CourseEnrollments_SemesterBatchEnrollments">
+            <End Role="SemesterBatchEnrollments" EntitySet="SemesterBatchEnrollments" />
+            <End Role="CourseEnrollments" EntitySet="CourseEnrollments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CourseEnrollments_Semesters" Association="Self.FK_CourseEnrollments_Semesters">
+            <End Role="Semesters" EntitySet="Semesters" />
+            <End Role="CourseEnrollments" EntitySet="CourseEnrollments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CourseEnrollments_Students" Association="Self.FK_CourseEnrollments_Students">
+            <End Role="Students" EntitySet="Students" />
+            <End Role="CourseEnrollments" EntitySet="CourseEnrollments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CourseEnrollments_TimeYears" Association="Self.FK_CourseEnrollments_TimeYears">
+            <End Role="TimeYears" EntitySet="TimeYears" />
+            <End Role="CourseEnrollments" EntitySet="CourseEnrollments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CourseTeachers_Disciplines" Association="Self.FK_CourseTeachers_Disciplines">
+            <End Role="Courses" EntitySet="Courses" />
+            <End Role="CourseTeachers" EntitySet="CourseTeachers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OfferedCourses_Courses" Association="Self.FK_OfferedCourses_Courses">
+            <End Role="Courses" EntitySet="Courses" />
+            <End Role="OfferedCourses" EntitySet="OfferedCourses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CourseTeachers_Grades" Association="Self.FK_CourseTeachers_Grades">
+            <End Role="Grades" EntitySet="Grades" />
+            <End Role="CourseTeachers" EntitySet="CourseTeachers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CourseTeachers_OfferedCourses" Association="Self.FK_CourseTeachers_OfferedCourses">
+            <End Role="OfferedCourses" EntitySet="OfferedCourses" />
+            <End Role="CourseTeachers" EntitySet="CourseTeachers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CourseTeachers_Semesters" Association="Self.FK_CourseTeachers_Semesters">
+            <End Role="Semesters" EntitySet="Semesters" />
+            <End Role="CourseTeachers" EntitySet="CourseTeachers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CourseTeachers_Teachers" Association="Self.FK_CourseTeachers_Teachers">
+            <End Role="Teachers" EntitySet="Teachers" />
+            <End Role="CourseTeachers" EntitySet="CourseTeachers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CourseTeachers_TimeYears" Association="Self.FK_CourseTeachers_TimeYears">
+            <End Role="TimeYears" EntitySet="TimeYears" />
+            <End Role="CourseTeachers" EntitySet="CourseTeachers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CourseTeachers_TuitionType" Association="Self.FK_CourseTeachers_TuitionType">
+            <End Role="TuitionTypes" EntitySet="TuitionTypes" />
+            <End Role="CourseTeachers" EntitySet="CourseTeachers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OfferedDisciplines_Disciplines" Association="Self.FK_OfferedDisciplines_Disciplines">
+            <End Role="Disciplines" EntitySet="Disciplines" />
+            <End Role="OfferedDisciplines" EntitySet="OfferedDisciplines" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SemesterBatchEnrollments_Disciplines" Association="Self.FK_SemesterBatchEnrollments_Disciplines">
+            <End Role="Disciplines" EntitySet="Disciplines" />
+            <End Role="SemesterBatchEnrollments" EntitySet="SemesterBatchEnrollments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OfferedCourses_Grades" Association="Self.FK_OfferedCourses_Grades">
+            <End Role="Grades" EntitySet="Grades" />
+            <End Role="OfferedCourses" EntitySet="OfferedCourses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OfferedDisciplines_Grades" Association="Self.FK_OfferedDisciplines_Grades">
+            <End Role="Grades" EntitySet="Grades" />
+            <End Role="OfferedDisciplines" EntitySet="OfferedDisciplines" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SemesterBatch_Grades" Association="Self.FK_SemesterBatch_Grades">
+            <End Role="Grades" EntitySet="Grades" />
+            <End Role="SemesterBatches" EntitySet="SemesterBatches" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SemesterBatchEnrollments_Grades" Association="Self.FK_SemesterBatchEnrollments_Grades">
+            <End Role="Grades" EntitySet="Grades" />
+            <End Role="SemesterBatchEnrollments" EntitySet="SemesterBatchEnrollments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OfferedCourses_SemesterBatch" Association="Self.FK_OfferedCourses_SemesterBatch">
+            <End Role="SemesterBatches" EntitySet="SemesterBatches" />
+            <End Role="OfferedCourses" EntitySet="OfferedCourses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OfferedCourses_Semesters" Association="Self.FK_OfferedCourses_Semesters">
+            <End Role="Semesters" EntitySet="Semesters" />
+            <End Role="OfferedCourses" EntitySet="OfferedCourses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OfferedCourses_TimeYears" Association="Self.FK_OfferedCourses_TimeYears">
+            <End Role="TimeYears" EntitySet="TimeYears" />
+            <End Role="OfferedCourses" EntitySet="OfferedCourses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OfferedDisciplines_SemesterBatch" Association="Self.FK_OfferedDisciplines_SemesterBatch">
+            <End Role="SemesterBatches" EntitySet="SemesterBatches" />
+            <End Role="OfferedDisciplines" EntitySet="OfferedDisciplines" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OfferedDisciplines_Semesters" Association="Self.FK_OfferedDisciplines_Semesters">
+            <End Role="Semesters" EntitySet="Semesters" />
+            <End Role="OfferedDisciplines" EntitySet="OfferedDisciplines" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OfferedDisciplines_TimeYears" Association="Self.FK_OfferedDisciplines_TimeYears">
+            <End Role="TimeYears" EntitySet="TimeYears" />
+            <End Role="OfferedDisciplines" EntitySet="OfferedDisciplines" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SemesterBatchEnrollments_OfferedDisciplines" Association="Self.FK_SemesterBatchEnrollments_OfferedDisciplines">
+            <End Role="OfferedDisciplines" EntitySet="OfferedDisciplines" />
+            <End Role="SemesterBatchEnrollments" EntitySet="SemesterBatchEnrollments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SemesterBatchEnrollments_SemesterBatches" Association="Self.FK_SemesterBatchEnrollments_SemesterBatches">
+            <End Role="SemesterBatches" EntitySet="SemesterBatches" />
+            <End Role="SemesterBatchEnrollments" EntitySet="SemesterBatchEnrollments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SemesterBatchEnrollments_Semesters" Association="Self.FK_SemesterBatchEnrollments_Semesters">
+            <End Role="Semesters" EntitySet="Semesters" />
+            <End Role="SemesterBatchEnrollments" EntitySet="SemesterBatchEnrollments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SemesterBatchEnrollments_Students" Association="Self.FK_SemesterBatchEnrollments_Students">
+            <End Role="Students" EntitySet="Students" />
+            <End Role="SemesterBatchEnrollments" EntitySet="SemesterBatchEnrollments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SemesterBatchEnrollments_TimeYears" Association="Self.FK_SemesterBatchEnrollments_TimeYears">
+            <End Role="TimeYears" EntitySet="TimeYears" />
+            <End Role="SemesterBatchEnrollments" EntitySet="SemesterBatchEnrollments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SemesterBatch_Semesters" Association="Self.FK_SemesterBatch_Semesters">
+            <End Role="Semesters" EntitySet="Semesters" />
+            <End Role="SemesterBatches" EntitySet="SemesterBatches" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SemesterBatch_TimeYears" Association="Self.FK_SemesterBatch_TimeYears">
+            <End Role="TimeYears" EntitySet="TimeYears" />
+            <End Role="SemesterBatches" EntitySet="SemesterBatches" />
+          </AssociationSet>
+          <EntitySet Name="Batches" EntityType="AcademicResultsDBModel.Batch" />
+          <AssociationSet Name="FK_BatchEnrollments_Batch" Association="AcademicResultsDBModel.FK_BatchEnrollments_Batch">
+            <End Role="Batch" EntitySet="Batches" />
+            <End Role="BatchEnrollment" EntitySet="BatchEnrollments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Batch_Grades" Association="AcademicResultsDBModel.FK_Batch_Grades">
+            <End Role="Grade" EntitySet="Grades" />
+            <End Role="Batch" EntitySet="Batches" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Batch_TimeYears" Association="AcademicResultsDBModel.FK_Batch_TimeYears">
+            <End Role="TimeYear" EntitySet="TimeYears" />
+            <End Role="Batch" EntitySet="Batches" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SemesterBatch_Batch" Association="AcademicResultsDBModel.FK_SemesterBatch_Batch">
+            <End Role="Batch" EntitySet="Batches" />
+            <End Role="SemesterBatch" EntitySet="SemesterBatches" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BatchEnrollments_EnrollmentType" Association="AcademicResultsDBModel.FK_BatchEnrollments_EnrollmentType">
+            <End Role="EnrollmentType" EntitySet="EnrollmentTypes" />
+            <End Role="BatchEnrollment" EntitySet="BatchEnrollments" />
+          </AssociationSet>
+          <EntitySet Name="MarksExamCWs" EntityType="AcademicResultsDBModel.MarksExamCW" />
+          <AssociationSet Name="FK_MarksExamCW_CourseEnrollment" Association="AcademicResultsDBModel.FK_MarksExamCW_CourseEnrollment">
+            <End Role="CourseEnrollment" EntitySet="CourseEnrollments" />
+            <End Role="MarksExamCW" EntitySet="MarksExamCWs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MarksExamCW_Courses" Association="AcademicResultsDBModel.FK_MarksExamCW_Courses">
+            <End Role="Course" EntitySet="Courses" />
+            <End Role="MarksExamCW" EntitySet="MarksExamCWs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MarksExamCW_Grades" Association="AcademicResultsDBModel.FK_MarksExamCW_Grades">
+            <End Role="Grade" EntitySet="Grades" />
+            <End Role="MarksExamCW" EntitySet="MarksExamCWs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MarksExamCW_OfferedCourse" Association="AcademicResultsDBModel.FK_MarksExamCW_OfferedCourse">
+            <End Role="OfferedCourse" EntitySet="OfferedCourses" />
+            <End Role="MarksExamCW" EntitySet="MarksExamCWs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MarksExamCW_Semesters" Association="AcademicResultsDBModel.FK_MarksExamCW_Semesters">
+            <End Role="Semester" EntitySet="Semesters" />
+            <End Role="MarksExamCW" EntitySet="MarksExamCWs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MarksExamCW_Students" Association="AcademicResultsDBModel.FK_MarksExamCW_Students">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="MarksExamCW" EntitySet="MarksExamCWs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MarksExamCW_TimeYears" Association="AcademicResultsDBModel.FK_MarksExamCW_TimeYears">
+            <End Role="TimeYear" EntitySet="TimeYears" />
+            <End Role="MarksExamCW" EntitySet="MarksExamCWs" />
+          </AssociationSet>
+          <EntitySet Name="GPAwRecomms" EntityType="AcademicResultsDBModel.GPAwRecomm" />
+          <AssociationSet Name="FK_GPAwRecomm_BatchEnrollments" Association="AcademicResultsDBModel.FK_GPAwRecomm_BatchEnrollments">
+            <End Role="BatchEnrollment" EntitySet="BatchEnrollments" />
+            <End Role="GPAwRecomm" EntitySet="GPAwRecomms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GPAwRecomm_Batch" Association="AcademicResultsDBModel.FK_GPAwRecomm_Batch">
+            <End Role="Batch" EntitySet="Batches" />
+            <End Role="GPAwRecomm" EntitySet="GPAwRecomms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GPAwRecomm_CRecommendations" Association="AcademicResultsDBModel.FK_GPAwRecomm_CRecommendations">
+            <End Role="RecommendationType" EntitySet="RecommendationTypes" />
+            <End Role="GPAwRecomm" EntitySet="GPAwRecomms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GPAwRecomm_Grades" Association="AcademicResultsDBModel.FK_GPAwRecomm_Grades">
+            <End Role="Grade" EntitySet="Grades" />
+            <End Role="GPAwRecomm" EntitySet="GPAwRecomms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GPAwRecomm_Recommendations" Association="AcademicResultsDBModel.FK_GPAwRecomm_Recommendations">
+            <End Role="RecommendationType" EntitySet="RecommendationTypes" />
+            <End Role="GPAwRecomm" EntitySet="GPAwRecomms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GPAwRecomm_Students" Association="AcademicResultsDBModel.FK_GPAwRecomm_Students">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="GPAwRecomm" EntitySet="GPAwRecomms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GPAwRecomm_TimeYears" Association="AcademicResultsDBModel.FK_GPAwRecomm_TimeYears">
+            <End Role="TimeYear" EntitySet="TimeYears" />
+            <End Role="GPAwRecomm" EntitySet="GPAwRecomms" />
+          </AssociationSet>
+          <EntitySet Name="RecommTranslations" EntityType="AcademicResultsDBModel.RecommTranslation" />
+          <AssociationSet Name="RecommTranslations_RecommendationTypes" Association="AcademicResultsDBModel.RecommTranslations_RecommendationTypes">
+            <End Role="RecommendationType" EntitySet="RecommendationTypes" />
+            <End Role="RecommTranslation" EntitySet="RecommTranslations" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="Batch">
+          <Key>
+            <PropertyRef Name="YearId" />
+            <PropertyRef Name="GradeId" />
+          </Key>
+          <Property Name="YearId" Type="Int32" Nullable="false" />
+          <Property Name="GradeId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="BatchEnrollments" Relationship="AcademicResultsDBModel.FK_BatchEnrollments_Batch" FromRole="Batch" ToRole="BatchEnrollment" />
+          <NavigationProperty Name="Grade" Relationship="AcademicResultsDBModel.FK_Batch_Grades" FromRole="Batch" ToRole="Grade" />
+          <NavigationProperty Name="TimeYear" Relationship="AcademicResultsDBModel.FK_Batch_TimeYears" FromRole="Batch" ToRole="TimeYear" />
+          <NavigationProperty Name="SemesterBatches" Relationship="AcademicResultsDBModel.FK_SemesterBatch_Batch" FromRole="Batch" ToRole="SemesterBatch" />
+          <Property Name="NameEnglish" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NameArabic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="GPAwRecomms" Relationship="AcademicResultsDBModel.FK_GPAwRecomm_Batch" FromRole="Batch" ToRole="GPAwRecomm" />
+        </EntityType>
+        <Association Name="FK_BatchEnrollments_Batch">
+          <End Type="AcademicResultsDBModel.Batch" Role="Batch" Multiplicity="1" />
+          <End Type="AcademicResultsDBModel.BatchEnrollment" Role="BatchEnrollment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Batch">
+              <PropertyRef Name="YearId" />
+              <PropertyRef Name="GradeId" />
+            </Principal>
+            <Dependent Role="BatchEnrollment">
+              <PropertyRef Name="YearId" />
+              <PropertyRef Name="GradeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Batch_Grades">
+          <End Type="AcademicResultsDBModel.Grade" Role="Grade" Multiplicity="1" />
+          <End Type="AcademicResultsDBModel.Batch" Role="Batch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Grade">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Batch">
+              <PropertyRef Name="GradeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Batch_TimeYears">
+          <End Type="AcademicResultsDBModel.TimeYear" Role="TimeYear" Multiplicity="1" />
+          <End Type="AcademicResultsDBModel.Batch" Role="Batch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TimeYear">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Batch">
+              <PropertyRef Name="YearId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SemesterBatch_Batch">
+          <End Type="AcademicResultsDBModel.Batch" Role="Batch" Multiplicity="1" />
+          <End Type="AcademicResultsDBModel.SemesterBatch" Role="SemesterBatch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Batch">
+              <PropertyRef Name="YearId" />
+              <PropertyRef Name="GradeId" />
+            </Principal>
+            <Dependent Role="SemesterBatch">
+              <PropertyRef Name="YearId" />
+              <PropertyRef Name="GradeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BatchEnrollments_EnrollmentType">
+          <End Type="AcademicResultsDBModel.EnrollmentType" Role="EnrollmentType" Multiplicity="1" />
+          <End Type="AcademicResultsDBModel.BatchEnrollment" Role="BatchEnrollment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EnrollmentType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BatchEnrollment">
+              <PropertyRef Name="EnrollmentTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="MarksExamCW">
+          <Key>
+            <PropertyRef Name="YearId" />
+            <PropertyRef Name="GradeId" />
+            <PropertyRef Name="SemesterId" />
+            <PropertyRef Name="CourseId" />
+            <PropertyRef Name="StudentId" />
+          </Key>
+          <Property Name="YearId" Type="Int32" Nullable="false" />
+          <Property Name="GradeId" Type="Int32" Nullable="false" />
+          <Property Name="SemesterId" Type="Int32" Nullable="false" />
+          <Property Name="CourseId" Type="Int32" Nullable="false" />
+          <Property Name="StudentId" Type="Int32" Nullable="false" />
+          <Property Name="CWMark" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="Present" Type="Boolean" />
+          <Property Name="Excuse" Type="Boolean" />
+          <Property Name="ExamMark" Type="Decimal" Precision="5" Scale="2" />
+          <NavigationProperty Name="CourseEnrollment" Relationship="AcademicResultsDBModel.FK_MarksExamCW_CourseEnrollment" FromRole="MarksExamCW" ToRole="CourseEnrollment" />
+          <NavigationProperty Name="Course" Relationship="AcademicResultsDBModel.FK_MarksExamCW_Courses" FromRole="MarksExamCW" ToRole="Course" />
+          <NavigationProperty Name="Grade" Relationship="AcademicResultsDBModel.FK_MarksExamCW_Grades" FromRole="MarksExamCW" ToRole="Grade" />
+          <NavigationProperty Name="OfferedCourse" Relationship="AcademicResultsDBModel.FK_MarksExamCW_OfferedCourse" FromRole="MarksExamCW" ToRole="OfferedCourse" />
+          <NavigationProperty Name="Semester" Relationship="AcademicResultsDBModel.FK_MarksExamCW_Semesters" FromRole="MarksExamCW" ToRole="Semester" />
+          <NavigationProperty Name="Student" Relationship="AcademicResultsDBModel.FK_MarksExamCW_Students" FromRole="MarksExamCW" ToRole="Student" />
+          <NavigationProperty Name="TimeYear" Relationship="AcademicResultsDBModel.FK_MarksExamCW_TimeYears" FromRole="MarksExamCW" ToRole="TimeYear" />
+        </EntityType>
+        <Association Name="FK_MarksExamCW_CourseEnrollment">
+          <End Type="AcademicResultsDBModel.CourseEnrollment" Role="CourseEnrollment" Multiplicity="1" />
+          <End Type="AcademicResultsDBModel.MarksExamCW" Role="MarksExamCW" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="CourseEnrollment">
+              <PropertyRef Name="YearId" />
+              <PropertyRef Name="GradeId" />
+              <PropertyRef Name="SemesterId" />
+              <PropertyRef Name="StudentId" />
+              <PropertyRef Name="CourseId" />
+            </Principal>
+            <Dependent Role="MarksExamCW">
+              <PropertyRef Name="YearId" />
+              <PropertyRef Name="GradeId" />
+              <PropertyRef Name="SemesterId" />
+              <PropertyRef Name="StudentId" />
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MarksExamCW_Courses">
+          <End Type="AcademicResultsDBModel.Course" Role="Course" Multiplicity="1" />
+          <End Type="AcademicResultsDBModel.MarksExamCW" Role="MarksExamCW" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MarksExamCW">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MarksExamCW_Grades">
+          <End Type="AcademicResultsDBModel.Grade" Role="Grade" Multiplicity="1" />
+          <End Type="AcademicResultsDBModel.MarksExamCW" Role="MarksExamCW" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Grade">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MarksExamCW">
+              <PropertyRef Name="GradeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MarksExamCW_OfferedCourse">
+          <End Type="AcademicResultsDBModel.OfferedCourse" Role="OfferedCourse" Multiplicity="1" />
+          <End Type="AcademicResultsDBModel.MarksExamCW" Role="MarksExamCW" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OfferedCourse">
+              <PropertyRef Name="YearId" />
+              <PropertyRef Name="GradeId" />
+              <PropertyRef Name="SemesterId" />
+              <PropertyRef Name="CourseId" />
+            </Principal>
+            <Dependent Role="MarksExamCW">
+              <PropertyRef Name="YearId" />
+              <PropertyRef Name="GradeId" />
+              <PropertyRef Name="SemesterId" />
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MarksExamCW_Semesters">
+          <End Type="AcademicResultsDBModel.Semester" Role="Semester" Multiplicity="1" />
+          <End Type="AcademicResultsDBModel.MarksExamCW" Role="MarksExamCW" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Semester">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MarksExamCW">
+              <PropertyRef Name="SemesterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MarksExamCW_Students">
+          <End Type="AcademicResultsDBModel.Student" Role="Student" Multiplicity="1" />
+          <End Type="AcademicResultsDBModel.MarksExamCW" Role="MarksExamCW" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MarksExamCW">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MarksExamCW_TimeYears">
+          <End Type="AcademicResultsDBModel.TimeYear" Role="TimeYear" Multiplicity="1" />
+          <End Type="AcademicResultsDBModel.MarksExamCW" Role="MarksExamCW" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TimeYear">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MarksExamCW">
+              <PropertyRef Name="YearId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="GPAwRecomm">
+          <Key>
+            <PropertyRef Name="YearId" />
+            <PropertyRef Name="GradeId" />
+            <PropertyRef Name="StudentId" />
+          </Key>
+          <Property Name="YearId" Type="Int32" Nullable="false" />
+          <Property Name="GradeId" Type="Int32" Nullable="false" />
+          <Property Name="StudentId" Type="Int32" Nullable="false" />
+          <Property Name="GPA" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+          <Property Name="RecommendationId" Type="Int32" Nullable="false" />
+          <Property Name="CGPA" Type="Decimal" Precision="5" Scale="3" />
+          <Property Name="CRecommendationId" Type="Int32" />
+          <NavigationProperty Name="BatchEnrollment" Relationship="AcademicResultsDBModel.FK_GPAwRecomm_BatchEnrollments" FromRole="GPAwRecomm" ToRole="BatchEnrollment" />
+          <NavigationProperty Name="Batch" Relationship="AcademicResultsDBModel.FK_GPAwRecomm_Batch" FromRole="GPAwRecomm" ToRole="Batch" />
+          <NavigationProperty Name="CumulativeRecommendationType" Relationship="AcademicResultsDBModel.FK_GPAwRecomm_CRecommendations" FromRole="GPAwRecomm" ToRole="RecommendationType" />
+          <NavigationProperty Name="Grade" Relationship="AcademicResultsDBModel.FK_GPAwRecomm_Grades" FromRole="GPAwRecomm" ToRole="Grade" />
+          <NavigationProperty Name="RecommendationType" Relationship="AcademicResultsDBModel.FK_GPAwRecomm_Recommendations" FromRole="GPAwRecomm" ToRole="RecommendationType" />
+          <NavigationProperty Name="Student" Relationship="AcademicResultsDBModel.FK_GPAwRecomm_Students" FromRole="GPAwRecomm" ToRole="Student" />
+          <NavigationProperty Name="TimeYear" Relationship="AcademicResultsDBModel.FK_GPAwRecomm_TimeYears" FromRole="GPAwRecomm" ToRole="TimeYear" />
+        </EntityType>
+        <Association Name="FK_GPAwRecomm_BatchEnrollments">
+          <End Type="AcademicResultsDBModel.BatchEnrollment" Role="BatchEnrollment" Multiplicity="1" />
+          <End Type="AcademicResultsDBModel.GPAwRecomm" Role="GPAwRecomm" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="BatchEnrollment">
+              <PropertyRef Name="YearId" />
+              <PropertyRef Name="GradeId" />
+              <PropertyRef Name="StudentId" />
+            </Principal>
+            <Dependent Role="GPAwRecomm">
+              <PropertyRef Name="YearId" />
+              <PropertyRef Name="GradeId" />
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GPAwRecomm_Batch">
+          <End Type="AcademicResultsDBModel.Batch" Role="Batch" Multiplicity="1" />
+          <End Type="AcademicResultsDBModel.GPAwRecomm" Role="GPAwRecomm" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Batch">
+              <PropertyRef Name="YearId" />
+              <PropertyRef Name="GradeId" />
+            </Principal>
+            <Dependent Role="GPAwRecomm">
+              <PropertyRef Name="YearId" />
+              <PropertyRef Name="GradeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GPAwRecomm_CRecommendations">
+          <End Type="AcademicResultsDBModel.RecommendationType" Role="RecommendationType" Multiplicity="0..1" />
+          <End Type="AcademicResultsDBModel.GPAwRecomm" Role="GPAwRecomm" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RecommendationType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GPAwRecomm">
+              <PropertyRef Name="CRecommendationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GPAwRecomm_Grades">
+          <End Type="AcademicResultsDBModel.Grade" Role="Grade" Multiplicity="1" />
+          <End Type="AcademicResultsDBModel.GPAwRecomm" Role="GPAwRecomm" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Grade">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GPAwRecomm">
+              <PropertyRef Name="GradeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GPAwRecomm_Recommendations">
+          <End Type="AcademicResultsDBModel.RecommendationType" Role="RecommendationType" Multiplicity="1" />
+          <End Type="AcademicResultsDBModel.GPAwRecomm" Role="GPAwRecomm" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RecommendationType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GPAwRecomm">
+              <PropertyRef Name="RecommendationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GPAwRecomm_Students">
+          <End Type="AcademicResultsDBModel.Student" Role="Student" Multiplicity="1" />
+          <End Type="AcademicResultsDBModel.GPAwRecomm" Role="GPAwRecomm" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GPAwRecomm">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GPAwRecomm_TimeYears">
+          <End Type="AcademicResultsDBModel.TimeYear" Role="TimeYear" Multiplicity="1" />
+          <End Type="AcademicResultsDBModel.GPAwRecomm" Role="GPAwRecomm" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TimeYear">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GPAwRecomm">
+              <PropertyRef Name="YearId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="RecommTranslation">
+          <Key>
+            <PropertyRef Name="ResText" />
+          </Key>
+          <Property Name="ResText" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RecommendationTypeN" Type="Int32" />
+          <NavigationProperty Name="RecommendationType" Relationship="AcademicResultsDBModel.RecommTranslations_RecommendationTypes" FromRole="RecommTranslation" ToRole="RecommendationType" />
+        </EntityType>
+        <Association Name="RecommTranslations_RecommendationTypes">
+          <End Type="AcademicResultsDBModel.RecommendationType" Role="RecommendationType" Multiplicity="0..1" />
+          <End Type="AcademicResultsDBModel.RecommTranslation" Role="RecommTranslation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RecommendationType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RecommTranslation">
+              <PropertyRef Name="RecommendationTypeN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AcademicResultsDBModelStoreContainer" CdmEntityContainer="AcademicResultsDBEntities">
+          <EntitySetMapping Name="BatchEnrollments">
+            <EntityTypeMapping TypeName="AcademicResultsDBModel.BatchEnrollment">
+              <MappingFragment StoreEntitySet="BatchEnrollments">
+                <ScalarProperty Name="EnrollmentTypeId" ColumnName="EnrollmentTypeId" />
+                <ScalarProperty Name="YearId" ColumnName="YearId" />
+                <ScalarProperty Name="GradeId" ColumnName="GradeId" />
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CourseDisciplines">
+            <EntityTypeMapping TypeName="AcademicResultsDBModel.CourseDiscipline">
+              <MappingFragment StoreEntitySet="CourseDisciplines">
+                <ScalarProperty Name="YearId" ColumnName="YearId" />
+                <ScalarProperty Name="GradeId" ColumnName="GradeId" />
+                <ScalarProperty Name="SemesterId" ColumnName="SemesterId" />
+                <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+                <ScalarProperty Name="DisciplineId" ColumnName="DisciplineId" />
+                <ScalarProperty Name="Optional" ColumnName="Optional" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CourseEnrollments">
+            <EntityTypeMapping TypeName="AcademicResultsDBModel.CourseEnrollment">
+              <MappingFragment StoreEntitySet="CourseEnrollments">
+                <ScalarProperty Name="YearId" ColumnName="YearId" />
+                <ScalarProperty Name="GradeId" ColumnName="GradeId" />
+                <ScalarProperty Name="SemesterId" ColumnName="SemesterId" />
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+                <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Courses">
+            <EntityTypeMapping TypeName="AcademicResultsDBModel.Course">
+              <MappingFragment StoreEntitySet="Courses">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CourseCode" ColumnName="CourseCode" />
+                <ScalarProperty Name="TitleArabic" ColumnName="TitleArabic" />
+                <ScalarProperty Name="TitleEnglish" ColumnName="TitleEnglish" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CourseTeachers">
+            <EntityTypeMapping TypeName="AcademicResultsDBModel.CourseTeacher">
+              <MappingFragment StoreEntitySet="CourseTeachers">
+                <ScalarProperty Name="YearId" ColumnName="YearId" />
+                <ScalarProperty Name="GradeId" ColumnName="GradeId" />
+                <ScalarProperty Name="SemesterId" ColumnName="SemesterId" />
+                <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+                <ScalarProperty Name="TeacherId" ColumnName="TeacherId" />
+                <ScalarProperty Name="TuitionTypeId" ColumnName="TuitionTypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Disciplines">
+            <EntityTypeMapping TypeName="AcademicResultsDBModel.Discipline">
+              <MappingFragment StoreEntitySet="Disciplines">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="NameEnglish" ColumnName="NameEnglish" />
+                <ScalarProperty Name="NameArabic" ColumnName="NameArabic" />
+                <ScalarProperty Name="NameEnglishShort" ColumnName="NameEnglishShort" />
+                <ScalarProperty Name="NameArabicShort" ColumnName="NameArabicShort" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EnrollmentTypes">
+            <EntityTypeMapping TypeName="AcademicResultsDBModel.EnrollmentType">
+              <MappingFragment StoreEntitySet="EnrollmentTypes">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="NameArabic" ColumnName="NameArabic" />
+                <ScalarProperty Name="NameEnglish" ColumnName="NameEnglish" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ExamTypes">
+            <EntityTypeMapping TypeName="AcademicResultsDBModel.ExamType">
+              <MappingFragment StoreEntitySet="ExamTypes">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="NameArabic" ColumnName="NameArabic" />
+                <ScalarProperty Name="NameEnglish" ColumnName="NameEnglish" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Grades">
+            <EntityTypeMapping TypeName="AcademicResultsDBModel.Grade">
+              <MappingFragment StoreEntitySet="Grades">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="NameEnglish" ColumnName="NameEnglish" />
+                <ScalarProperty Name="NameArabic" ColumnName="NameArabic" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OfferedCourses">
+            <EntityTypeMapping TypeName="AcademicResultsDBModel.OfferedCourse">
+              <MappingFragment StoreEntitySet="OfferedCourses">
+                <ScalarProperty Name="YearId" ColumnName="YearId" />
+                <ScalarProperty Name="GradeId" ColumnName="GradeId" />
+                <ScalarProperty Name="SemesterId" ColumnName="SemesterId" />
+                <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+                <ScalarProperty Name="ExamFraction" ColumnName="ExamFraction" />
+                <ScalarProperty Name="CourseWorkFraction" ColumnName="CourseWorkFraction" />
+                <ScalarProperty Name="CreditHours" ColumnName="CreditHours" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OfferedDisciplines">
+            <EntityTypeMapping TypeName="AcademicResultsDBModel.OfferedDiscipline">
+              <MappingFragment StoreEntitySet="OfferedDisciplines">
+                <ScalarProperty Name="YearId" ColumnName="YearId" />
+                <ScalarProperty Name="GradeId" ColumnName="GradeId" />
+                <ScalarProperty Name="SemesterId" ColumnName="SemesterId" />
+                <ScalarProperty Name="DisciplineId" ColumnName="DisciplineId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RecommendationTypes">
+            <EntityTypeMapping TypeName="AcademicResultsDBModel.RecommendationType">
+              <MappingFragment StoreEntitySet="RecommendationTypes">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="NameArabic" ColumnName="NameArabic" />
+                <ScalarProperty Name="NameEnglish" ColumnName="NameEnglish" />
+                <ScalarProperty Name="Pass" ColumnName="Pass" />
+                <ScalarProperty Name="ShortNameEnglish" ColumnName="ShortNameEnglish" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SemesterBatchEnrollments">
+            <EntityTypeMapping TypeName="AcademicResultsDBModel.SemesterBatchEnrollment">
+              <MappingFragment StoreEntitySet="SemesterBatchEnrollments">
+                <ScalarProperty Name="YearId" ColumnName="YearId" />
+                <ScalarProperty Name="GradeId" ColumnName="GradeId" />
+                <ScalarProperty Name="SemesterId" ColumnName="SemesterId" />
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+                <ScalarProperty Name="DisciplineId" ColumnName="DisciplineId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SemesterBatches">
+            <EntityTypeMapping TypeName="AcademicResultsDBModel.SemesterBatch">
+              <MappingFragment StoreEntitySet="SemesterBatches">
+                <ScalarProperty Name="YearId" ColumnName="YearId" />
+                <ScalarProperty Name="GradeId" ColumnName="GradeId" />
+                <ScalarProperty Name="SemesterId" ColumnName="SemesterId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Semesters">
+            <EntityTypeMapping TypeName="AcademicResultsDBModel.Semester">
+              <MappingFragment StoreEntitySet="Semesters">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="NameEnglish" ColumnName="NameEnglish" />
+                <ScalarProperty Name="NameArabic" ColumnName="NameArabic" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Students">
+            <EntityTypeMapping TypeName="AcademicResultsDBModel.Student">
+              <MappingFragment StoreEntitySet="Students">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Index" ColumnName="Index" />
+                <ScalarProperty Name="UnivNo" ColumnName="UnivNo" />
+                <ScalarProperty Name="NameArabic" ColumnName="NameArabic" />
+                <ScalarProperty Name="NameEnglish" ColumnName="NameEnglish" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Teachers">
+            <EntityTypeMapping TypeName="AcademicResultsDBModel.Teacher">
+              <MappingFragment StoreEntitySet="Teachers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="NameArabic" ColumnName="NameArabic" />
+                <ScalarProperty Name="NameEnglish" ColumnName="NameEnglish" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TimeYears">
+            <EntityTypeMapping TypeName="AcademicResultsDBModel.TimeYear">
+              <MappingFragment StoreEntitySet="TimeYears">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="NameEnglish" ColumnName="NameEnglish" />
+                <ScalarProperty Name="NameArabic" ColumnName="NameArabic" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TuitionTypes">
+            <EntityTypeMapping TypeName="AcademicResultsDBModel.TuitionType">
+              <MappingFragment StoreEntitySet="TuitionTypes">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="NameArabic" ColumnName="NameArabic" />
+                <ScalarProperty Name="NameEnglish" ColumnName="NameEnglish" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Batches">
+            <EntityTypeMapping TypeName="AcademicResultsDBModel.Batch">
+              <MappingFragment StoreEntitySet="Batches">
+                <ScalarProperty Name="NameArabic" ColumnName="NameArabic" />
+                <ScalarProperty Name="NameEnglish" ColumnName="NameEnglish" />
+                <ScalarProperty Name="GradeId" ColumnName="GradeId" />
+                <ScalarProperty Name="YearId" ColumnName="YearId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MarksExamCWs">
+            <EntityTypeMapping TypeName="AcademicResultsDBModel.MarksExamCW">
+              <MappingFragment StoreEntitySet="MarksExamCW">
+                <ScalarProperty Name="ExamMark" ColumnName="ExamMark" />
+                <ScalarProperty Name="Excuse" ColumnName="Excuse" />
+                <ScalarProperty Name="Present" ColumnName="Present" />
+                <ScalarProperty Name="CWMark" ColumnName="CWMark" />
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+                <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+                <ScalarProperty Name="SemesterId" ColumnName="SemesterId" />
+                <ScalarProperty Name="GradeId" ColumnName="GradeId" />
+                <ScalarProperty Name="YearId" ColumnName="YearId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GPAwRecomms">
+            <EntityTypeMapping TypeName="AcademicResultsDBModel.GPAwRecomm">
+              <MappingFragment StoreEntitySet="GPAwRecomm">
+                <ScalarProperty Name="CRecommendationId" ColumnName="CRecommendationId" />
+                <ScalarProperty Name="CGPA" ColumnName="CGPA" />
+                <ScalarProperty Name="RecommendationId" ColumnName="RecommendationId" />
+                <ScalarProperty Name="GPA" ColumnName="GPA" />
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+                <ScalarProperty Name="GradeId" ColumnName="GradeId" />
+                <ScalarProperty Name="YearId" ColumnName="YearId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RecommTranslations">
+            <EntityTypeMapping TypeName="AcademicResultsDBModel.RecommTranslation">
+              <MappingFragment StoreEntitySet="RecommTranslations">
+                <ScalarProperty Name="RecommendationTypeN" ColumnName="RecommendationTypeN" />
+                <ScalarProperty Name="ResText" ColumnName="ResText" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

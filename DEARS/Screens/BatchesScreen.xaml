@@ -1,0 +1,52 @@
+﻿<UserControl x:Class="BatchesScreen"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:DEARS"
+             mc:Ignorable="d" Loaded="UserControl_Loaded"
+             d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <CollectionViewSource x:Key="GradesViewSource" />
+        <CollectionViewSource x:Key="BatchesViewSource" />
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <GroupBox Grid.Column="1" Grid.Row="0">
+            <GroupBox.Header>Query Parameters</GroupBox.Header>
+            <UniformGrid Rows="3" Columns="3">
+                <UniformGrid.Resources>
+                    <Style TargetType="Label">
+                        <Setter Property="Margin" Value="0,0,20,0" />
+                        <Setter Property="HorizontalAlignment" Value="Right" />
+                    </Style>
+                </UniformGrid.Resources>
+
+            </UniformGrid>
+        </GroupBox>
+        <DataGrid Grid.Row="1" Width="Auto" CanUserAddRows="True"  AutoGenerateColumns="False" ItemsSource="{Binding Source={StaticResource BatchesViewSource}}">
+            <DataGrid.RowValidationRules>
+                <local:DuplicateValidationRule />
+            </DataGrid.RowValidationRules>
+            <DataGrid.Columns>
+                <DataGridTextColumn IsReadOnly="True" Header="Year" Binding="{Binding Path=TimeYear.NameEnglish}" />
+                <DataGridComboBoxColumn Header="Grade" ItemsSource="{Binding Source={StaticResource GradesViewSource}}" 
+                                        DisplayMemberPath="NameEnglish" 
+                                        SelectedValuePath="{Binding}"
+                                        SelectedValueBinding="{Binding Path=Grade, UpdateSourceTrigger=LostFocus }" />
+            </DataGrid.Columns>
+        </DataGrid>
+        <GroupBox Grid.Column="1" Grid.Row="2" MinHeight="80">
+            <GroupBox.Header>Help/Key</GroupBox.Header>
+            <TextBlock TextWrapping="Wrap">
+                This space shows help or other necessary information that is needed to confuse the user about this screen.
+                <LineBreak />
+                So go ahead and plase be confused!!!
+            </TextBlock>
+        </GroupBox>
+    </Grid>
+</UserControl>

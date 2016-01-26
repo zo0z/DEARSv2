@@ -1,0 +1,45 @@
+﻿<Window x:Class="TranslatorDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:DEARS"
+    Title="TranslatorDialog" Height="300" Width="400" ContentRendered="Window_ContentRendered" Closing="Window_Closing">
+    <Window.Resources>
+        <CollectionViewSource x:Key="RecommendationsViewSource" />
+        <CollectionViewSource x:Key="RecommendationTypesViewSource" />
+    </Window.Resources>
+    <DockPanel LastChildFill="True">
+        <!--<UniformGrid DockPanel.Dock="Bottom">
+            <Button DockPanel.Dock="Top">Load</Button>
+            <Label></Label>
+            <Button DockPanel.Dock="Top">Save</Button>
+            <Label>File</Label>
+            <TextBox></TextBox>
+            <Button DockPanel.Dock="Top">Browse</Button>
+        </UniformGrid>-->
+        <Grid DockPanel.Dock="Bottom">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Button IsEnabled="False" Grid.Column="0" Margin="20,10,20,10">Load From File</Button>
+            <Button IsEnabled="False" Grid.Column="1" Margin="20,10,20,10">Save to File</Button>
+            <!--<Button Grid.Column="2" Margin="20,10,20,10">Save to Database</Button>-->
+            <!--<Button Grid.Column="2" Margin="20,20,20,20">Load From File</Button>-->
+        </Grid>
+
+        <DataGrid Name="TransDataGrid" CanUserAddRows="False" CanUserReorderColumns="False" DockPanel.Dock="Top" AutoGenerateColumns="False" 
+                  ItemsSource="{Binding Source={StaticResource RecommendationsViewSource}}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Recommendation (in File)" Binding="{Binding Path=ResText}" />
+                <DataGridComboBoxColumn Header="Recommendation (to Database)" DisplayMemberPath="ShortNameEnglish" SelectedValuePath="Id" SelectedValueBinding="{Binding Path=RecommendationTypeN}"
+                                        ItemsSource="{Binding Source={StaticResource RecommendationTypesViewSource}}"
+                                        />
+            </DataGrid.Columns>
+        </DataGrid>
+        
+    </DockPanel>
+</Window>

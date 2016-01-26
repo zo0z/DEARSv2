@@ -1,0 +1,77 @@
+﻿<UserControl x:Class="OfferedDisciplinesScreen"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:DEARS"
+             mc:Ignorable="d" 
+             Loaded="UserControl_Loaded"
+             d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <CollectionViewSource x:Key="GradesViewSource" />
+        <CollectionViewSource x:Key="DisciplinesViewSource" Source=""/>
+        <CollectionViewSource x:Key="OfferedDisciplinesViewSource" />
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <GroupBox Grid.Column="1" Grid.Row="0">
+            <GroupBox.Header>Query Parameters</GroupBox.Header>
+            <UniformGrid Rows="2" Columns="3">
+                <UniformGrid.Resources>
+                    <Style TargetType="Label">
+                        <Setter Property="Margin" Value="0,0,20,0" />
+                        <Setter Property="HorizontalAlignment" Value="Right" />
+                    </Style>
+                </UniformGrid.Resources>
+                <!--<Label>Grade:</Label>
+                <ComboBox ItemsSource="{Binding Source={StaticResource GradesViewSource}}" DisplayMemberPath="NameEnglish"></ComboBox>
+                <Label></Label>-->
+
+                <!--<Label>Discipline:</Label>
+                <ComboBox></ComboBox>
+                <CheckBox HorizontalAlignment="Center" VerticalAlignment="Center">ALL</CheckBox>-->
+
+                <!--<Label IsEnabled="False">Course:</Label>
+                <ComboBox IsEnabled="False"></ComboBox>
+                <Label IsEnabled="False"></Label>-->
+            </UniformGrid>
+        </GroupBox>
+        <DataGrid Grid.Row="1" Width="Auto" ItemsSource="{Binding Source={StaticResource OfferedDisciplinesViewSource}}" AutoGenerateColumns="False">
+            <DataGrid.RowValidationRules>
+                <local:DuplicateValidationRule ValidationStep="UpdatedValue"/>
+            </DataGrid.RowValidationRules>
+            <DataGrid.Resources>
+                <Style TargetType="DataGridCell" x:Key="DataGridColumnReadOnlyStyle">
+                    <Setter Property="Background" 
+                                Value="{DynamicResource {x:Static SystemColors.InactiveCaptionBrushKey}}" />
+                </Style>
+            </DataGrid.Resources>
+            <DataGrid.Columns>
+
+                <DataGridComboBoxColumn  Header="Grade" ItemsSource="{Binding Source={StaticResource GradesViewSource}}" 
+                                        DisplayMemberPath="NameEnglish" SelectedValuePath="{Binding}" SelectedValueBinding="{Binding Path=Grade, UpdateSourceTrigger=LostFocus }">
+                </DataGridComboBoxColumn>
+
+                <DataGridComboBoxColumn  Header="Discipline" ItemsSource="{Binding Source={StaticResource DisciplinesViewSource}}" 
+                                        DisplayMemberPath="NameEnglishShort" SelectedValuePath="{Binding}" SelectedValueBinding="{Binding Path=Discipline, UpdateSourceTrigger=LostFocus }">
+                </DataGridComboBoxColumn>
+                
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <GroupBox Grid.Column="1" Grid.Row="3" MinHeight="80">
+            <GroupBox.Header>Help/Key</GroupBox.Header>
+            <TextBlock TextWrapping="Wrap">
+                This space shows help or other necessary information that is needed to confuse the user about this screen.
+                <LineBreak />
+                So go ahead and plase be confused!!!
+            </TextBlock>
+        </GroupBox>
+        <Button Content="Load FromLast Semester" HorizontalAlignment="Right" Margin="4" Grid.Row="2" VerticalAlignment="Top" Width="168"/>
+    </Grid>
+</UserControl>

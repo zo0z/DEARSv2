@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="449a0bd8bb57488382c0e10bedeba9a2" Name="Diagram1" ZoomLevel="95">
+        <EntityTypeShape EntityType="AcademicResultsDBModel.BatchEnrollment" Width="1.5" PointX="5.25" PointY="12.375" />
+        <EntityTypeShape EntityType="AcademicResultsDBModel.Batch" Width="1.5" PointX="3" PointY="12.5" />
+        <EntityTypeShape EntityType="AcademicResultsDBModel.CourseDiscipline" Width="1.5" PointX="9.75" PointY="7.5" />
+        <EntityTypeShape EntityType="AcademicResultsDBModel.CourseEnrollment" Width="1.5" PointX="12.75" PointY="12.125" />
+        <EntityTypeShape EntityType="AcademicResultsDBModel.Course" Width="1.5" PointX="10.5" PointY="17.5" />
+        <EntityTypeShape EntityType="AcademicResultsDBModel.CourseTeacher" Width="1.5" PointX="14.75" PointY="4.625" />
+        <EntityTypeShape EntityType="AcademicResultsDBModel.Discipline" Width="1.5" PointX="5.25" PointY="4.625" />
+        <EntityTypeShape EntityType="AcademicResultsDBModel.EnrollmentType" Width="1.5" PointX="3" PointY="8.875" />
+        <EntityTypeShape EntityType="AcademicResultsDBModel.ExamType" Width="1.5" PointX="0.75" PointY="1.75" />
+        <EntityTypeShape EntityType="AcademicResultsDBModel.GPAwRecomm" Width="1.5" PointX="10.5" PointY="12" />
+        <EntityTypeShape EntityType="AcademicResultsDBModel.Grade" Width="1.5" PointX="0.75" PointY="7" />
+        <EntityTypeShape EntityType="AcademicResultsDBModel.MarksExamCW" Width="1.5" PointX="15" PointY="9.375" />
+        <EntityTypeShape EntityType="AcademicResultsDBModel.OfferedCourse" Width="1.5" PointX="7.5" PointY="7" />
+        <EntityTypeShape EntityType="AcademicResultsDBModel.OfferedDiscipline" Width="1.5" PointX="12.5" PointY="7.5" />
+        <EntityTypeShape EntityType="AcademicResultsDBModel.RecommendationType" Width="1.5" PointX="8.25" PointY="16.625" />
+        <EntityTypeShape EntityType="AcademicResultsDBModel.RecommTranslation" Width="1.5" PointX="10.5" PointY="21.125" />
+        <EntityTypeShape EntityType="AcademicResultsDBModel.SemesterBatchEnrollment" Width="1.5" PointX="7.5" PointY="12" />
+        <EntityTypeShape EntityType="AcademicResultsDBModel.SemesterBatch" Width="1.5" PointX="5.25" PointY="8.375" />
+        <EntityTypeShape EntityType="AcademicResultsDBModel.Semester" Width="1.5" PointX="3" PointY="4.375" />
+        <EntityTypeShape EntityType="AcademicResultsDBModel.Student" Width="1.5" PointX="3" PointY="16.5" />
+        <EntityTypeShape EntityType="AcademicResultsDBModel.Teacher" Width="1.5" PointX="12.5" PointY="0.75" />
+        <EntityTypeShape EntityType="AcademicResultsDBModel.TimeYear" Width="1.5" PointX="0.75" PointY="12" />
+        <EntityTypeShape EntityType="AcademicResultsDBModel.TuitionType" Width="1.5" PointX="12.5" PointY="4.25" />
+        <AssociationConnector Association="AcademicResultsDBModel.FK_BatchEnrollments_Batch" />
+        <AssociationConnector Association="AcademicResultsDBModel.FK_BatchEnrollments_EnrollmentType" />
+        <AssociationConnector Association="AcademicResultsDBModel.FK_BatchEnrollments_Grades" />
+        <AssociationConnector Association="AcademicResultsDBModel.FK_BatchEnrollments_Students" />
+        <AssociationConnector Association="AcademicResultsDBModel.FK_BatchEnrollments_TimeYears" />
+        <AssociationConnector Association="AcademicResultsDBModel.FK_GPAwRecomm_BatchEnrollments" />
+        <AssociationConnector Association="AcademicResultsDBModel.FK_SemesterBatchEnrollments_BatchEnrollments" />
+        <AssociationConnector Association="AcademicResultsDBModel.FK_Batch_Grades" />
+        <AssociationConnector Association="AcademicResultsDBModel.FK_Batch_TimeYears" />
+        <AssociationConnector Association="AcademicResultsDBModel.FK_GPAwRecomm_Batch" />
+        <AssociationConnector Association="AcademicResultsDBModel.FK_SemesterBatch_Batch" />
+        <AssociationConnector Association="AcademicResultsDBModel.FK_CourseDisciplines_Courses" />
+        <AssociationConnector Association="AcademicResultsDBModel.FK_CourseDisciplines_Disciplines" />
+        <AssociationConnector Association="AcademicResultsDBModel.FK_CourseDisciplines_Grades" />
+        <AssociationConnector Association="AcademicResultsDBModel.FK_CourseDisciplines_OfferedCourses" />
+        <AssociationConnector Association="AcademicResultsDBModel.FK_CourseDisciplines_OfferedDisciplines" />
+        <AssociationConnector Association="AcademicResultsDBModel.FK_CourseDisciplines_SemesterBatch" />
+        <AssociationConnector Association="AcademicResultsDBModel.FK_CourseDisciplines_Semesters" />
+        <AssociationConnector Association="AcademicResultsDBModel.FK_CourseDisciplines_TimeYears" />
+        <AssociationConnector Association="AcademicResultsDBModel.FK_CourseEnrollments_Courses" />
+        <AssociationConnector Association="AcademicResultsDBModel.FK_CourseEnrollments_Grades" />
+        <AssociationConnector Association="AcademicResultsDBModel.FK_CourseEnrollments_OfferedCourses" />
+        <AssociationConnector Association="AcademicResultsDBModel.FK_CourseEnrollments_SemesterBatchEnrollments" />
+        <AssociationConnector Association="AcademicResultsDBModel.FK_CourseEnrollments_Semesters" />
+        <AssociationConnector Association="AcademicResultsDBModel.FK_CourseEnrollments_Students" />
+        <AssociationConnector Association="AcademicResultsDBModel.FK_CourseEnrollments_TimeYears" />
+        <AssociationConnector Association="AcademicResultsDBModel.FK_MarksExamCW_CourseEnrollment" />
+        <AssociationConnector Association="AcademicResultsDBModel.FK_CourseTeachers_Disciplines" />
+        <AssociationConnector Association="AcademicResultsDBModel.FK_MarksExamCW_Courses" />
+        <AssociationConnector Association="AcademicResultsDBModel.FK_OfferedCourses_Courses" />
+        <AssociationConnector Association="AcademicResultsDBModel.FK_CourseTeachers_Grades" />
+        <AssociationConnector Association="AcademicResultsDBModel.FK_CourseTeachers_OfferedCourses" />
+        <AssociationConnector Association="AcademicResultsDBModel.FK_CourseTeachers_Semesters" />
+        <AssociationConnector Association="AcademicResultsDBModel.FK_CourseTeachers_Teachers" />
+        <AssociationConnector Association="AcademicResultsDBModel.FK_CourseTeachers_TimeYears" />
+        <AssociationConnector Association="AcademicResultsDBModel.FK_CourseTeachers_TuitionType" />
+        <AssociationConnector Association="AcademicResultsDBModel.FK_OfferedDisciplines_Disciplines" />
+        <AssociationConnector Association="AcademicResultsDBModel.FK_SemesterBatchEnrollments_Disciplines" />
+        <AssociationConnector Association="AcademicResultsDBModel.FK_GPAwRecomm_CumulativeRecommendations" />
+        <AssociationConnector Association="AcademicResultsDBModel.FK_GPAwRecomm_Grades" />
+        <AssociationConnector Association="AcademicResultsDBModel.FK_GPAwRecomm_Students" />
+        <AssociationConnector Association="AcademicResultsDBModel.FK_GPAwRecomm_TimeYears" />
+        <AssociationConnector Association="AcademicResultsDBModel.FK_GPAwRecomm_YearRecommendations" />
+        <AssociationConnector Association="AcademicResultsDBModel.FK_MarksExamCW_Grades" />
+        <AssociationConnector Association="AcademicResultsDBModel.FK_OfferedCourses_Grades" />
+        <AssociationConnector Association="AcademicResultsDBModel.FK_OfferedDisciplines_Grades" />
+        <AssociationConnector Association="AcademicResultsDBModel.FK_SemesterBatch_Grades" />
+        <AssociationConnector Association="AcademicResultsDBModel.FK_SemesterBatchEnrollments_Grades" />
+        <AssociationConnector Association="AcademicResultsDBModel.FK_MarksExamCW_OfferedCourse" />
+        <AssociationConnector Association="AcademicResultsDBModel.FK_MarksExamCW_Semesters" />
+        <AssociationConnector Association="AcademicResultsDBModel.FK_MarksExamCW_Students" />
+        <AssociationConnector Association="AcademicResultsDBModel.FK_MarksExamCW_TimeYears" />
+        <AssociationConnector Association="AcademicResultsDBModel.FK_OfferedCourses_SemesterBatch" />
+        <AssociationConnector Association="AcademicResultsDBModel.FK_OfferedCourses_Semesters" />
+        <AssociationConnector Association="AcademicResultsDBModel.FK_OfferedCourses_TimeYears" />
+        <AssociationConnector Association="AcademicResultsDBModel.FK_OfferedDisciplines_SemesterBatch" />
+        <AssociationConnector Association="AcademicResultsDBModel.FK_OfferedDisciplines_Semesters" />
+        <AssociationConnector Association="AcademicResultsDBModel.FK_OfferedDisciplines_TimeYears" />
+        <AssociationConnector Association="AcademicResultsDBModel.FK_SemesterBatchEnrollments_OfferedDisciplines" />
+        <AssociationConnector Association="AcademicResultsDBModel.RecommTranslations_RecommendationTypes" />
+        <AssociationConnector Association="AcademicResultsDBModel.FK_SemesterBatchEnrollments_SemesterBatches" />
+        <AssociationConnector Association="AcademicResultsDBModel.FK_SemesterBatchEnrollments_Semesters" />
+        <AssociationConnector Association="AcademicResultsDBModel.FK_SemesterBatchEnrollments_Students" />
+        <AssociationConnector Association="AcademicResultsDBModel.FK_SemesterBatchEnrollments_TimeYears" />
+        <AssociationConnector Association="AcademicResultsDBModel.FK_SemesterBatch_Semesters" />
+        <AssociationConnector Association="AcademicResultsDBModel.FK_SemesterBatch_TimeYears" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
