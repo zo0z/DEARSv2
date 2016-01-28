@@ -18,9 +18,9 @@ Partial Public Class RecommTranslation
 		 If DirectCast(Me, Object).Equals(DirectCast(other, Object)) Then
             Return True
         Else
-					     		    Return (Me.ResText = other.ResText)
+					    Return (Me.ResText = other.ResText)
 		End If	
-		'Return (Me.ResText = other.ResText)	
+	
 	End Function
     Public Property ResText As String
     Public Property RecommendationTypeN As Nullable(Of Integer)

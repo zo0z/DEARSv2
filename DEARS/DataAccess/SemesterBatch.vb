@@ -18,12 +18,12 @@ Partial Public Class SemesterBatch
 		 If DirectCast(Me, Object).Equals(DirectCast(other, Object)) Then
             Return True
         Else
-			If {		     Me.YearId,other.YearId,Me.GradeId,other.GradeId,Me.SemesterId,other.SemesterId}.Any(Function(s) s = 0) Then 
-Return False
-End If
+			If {Me.YearId,other.YearId,Me.GradeId,other.GradeId,Me.SemesterId,other.SemesterId}.Any(Function(s) s = 0) Then 
+				Return False
+			End If
 		    Return (Me.YearId = other.YearId) And(Me.GradeId = other.GradeId) And(Me.SemesterId = other.SemesterId)
 		End If	
-		'Return (Me.YearId = other.YearId) And(Me.GradeId = other.GradeId) And(Me.SemesterId = other.SemesterId)	
+	
 	End Function
     Public Property YearId As Integer
     Public Property GradeId As Integer

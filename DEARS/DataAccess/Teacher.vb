@@ -18,12 +18,12 @@ Partial Public Class Teacher
 		 If DirectCast(Me, Object).Equals(DirectCast(other, Object)) Then
             Return True
         Else
-			If {		     Me.Id,other.Id}.Any(Function(s) s = 0) Then 
-Return False
-End If
+			If {Me.Id,other.Id}.Any(Function(s) s = 0) Then 
+				Return False
+			End If
 		    Return (Me.Id = other.Id)
 		End If	
-		'Return (Me.Id = other.Id)	
+	
 	End Function
     Public Property Id As Integer
     Public Property NameArabic As String

@@ -18,12 +18,12 @@ Partial Public Class OfferedDiscipline
 		 If DirectCast(Me, Object).Equals(DirectCast(other, Object)) Then
             Return True
         Else
-			If {		     Me.YearId,other.YearId,Me.GradeId,other.GradeId,Me.SemesterId,other.SemesterId,Me.DisciplineId,other.DisciplineId}.Any(Function(s) s = 0) Then 
-Return False
-End If
+			If {Me.YearId,other.YearId,Me.GradeId,other.GradeId,Me.SemesterId,other.SemesterId,Me.DisciplineId,other.DisciplineId}.Any(Function(s) s = 0) Then 
+				Return False
+			End If
 		    Return (Me.YearId = other.YearId) And(Me.GradeId = other.GradeId) And(Me.SemesterId = other.SemesterId) And(Me.DisciplineId = other.DisciplineId)
 		End If	
-		'Return (Me.YearId = other.YearId) And(Me.GradeId = other.GradeId) And(Me.SemesterId = other.SemesterId) And(Me.DisciplineId = other.DisciplineId)	
+	
 	End Function
     Public Property YearId As Integer
     Public Property GradeId As Integer

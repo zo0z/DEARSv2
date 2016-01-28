@@ -31,6 +31,7 @@ Public Class MeetingResultsScreen
             End If
         End If
 
+        GradeID = SharedState.GetSingleInstance().GradeID
         Dim CourseID As Integer = SharedState.GetSingleInstance().CourseID
         Dim DisciplineID As Integer = SharedState.GetSingleInstance().DisciplineID
 

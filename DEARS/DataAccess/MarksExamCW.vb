@@ -18,12 +18,12 @@ Partial Public Class MarksExamCW
 		 If DirectCast(Me, Object).Equals(DirectCast(other, Object)) Then
             Return True
         Else
-			If {		     Me.YearId,other.YearId,Me.GradeId,other.GradeId,Me.SemesterId,other.SemesterId,Me.CourseId,other.CourseId,Me.StudentId,other.StudentId}.Any(Function(s) s = 0) Then 
-Return False
-End If
+			If {Me.YearId,other.YearId,Me.GradeId,other.GradeId,Me.SemesterId,other.SemesterId,Me.CourseId,other.CourseId,Me.StudentId,other.StudentId}.Any(Function(s) s = 0) Then 
+				Return False
+			End If
 		    Return (Me.YearId = other.YearId) And(Me.GradeId = other.GradeId) And(Me.SemesterId = other.SemesterId) And(Me.CourseId = other.CourseId) And(Me.StudentId = other.StudentId)
 		End If	
-		'Return (Me.YearId = other.YearId) And(Me.GradeId = other.GradeId) And(Me.SemesterId = other.SemesterId) And(Me.CourseId = other.CourseId) And(Me.StudentId = other.StudentId)	
+	
 	End Function
     Public Property YearId As Integer
     Public Property GradeId As Integer

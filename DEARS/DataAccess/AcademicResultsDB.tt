@@ -1,4 +1,4 @@
-﻿<#@ template language="VB" debug="false" hostspecific="true"#>
+﻿<#@ template language="VB" debug="true" hostspecific="true"#>
 <#@ include file="EF6.Utility.VB.ttinclude"#><#@
  output extension=".vb"#><#
 
@@ -31,7 +31,7 @@ For Each loopEntity As EntityType In typeMapper.GetItemsToGenerate(Of EntityType
 		Dim IdProps as New List(Of EdmMember)
 		For Each sp as EdmProperty In simpProps
 			If sp.Name.IndexOf("Id") > 0 Then
-				IdProps.Add(sp)
+				'IdProps.Add(sp)
 			End If
 		Next
 		Dim KeyProperties = typeMapper.GetKeyProperties(entity)
@@ -49,8 +49,7 @@ For Each loopEntity As EntityType In typeMapper.GetItemsToGenerate(Of EntityType
 			If  code.Escape(entity) <> "RecommTranslation" Then
 				Write("If {")
 			End If
-			#>
-		     <#
+			#><#
 			 If  code.Escape(entity) <> "RecommTranslation" Then
 			For j as Integer = 0 To IdProps.Count - 1
 				If j = IdProps.Count - 1 Then
@@ -62,8 +61,9 @@ For Each loopEntity As EntityType In typeMapper.GetItemsToGenerate(Of EntityType
 			Write("}")
 			End If
 			#><# If  code.Escape(entity) <> "RecommTranslation" Then
-			WriteLine(".Any(Function(s) s = 0) Then ")
-			WriteLine("Return False")
+			WriteLine(".Any(Function(s) s = 0) Then ")#>
+				Return False
+			<#
 		    WriteLine("End If") 
 			End If
 			#>
@@ -78,12 +78,6 @@ For Each loopEntity As EntityType In typeMapper.GetItemsToGenerate(Of EntityType
 		#>
 
 		End If	
-		'Return <#
-	For i as Integer = 0 To KeyProperties.Count - 2
-		Write(String.Format("(Me.{0} = other.{0}) And", KeyProperties(i).Name))
-	Next
-	Write(String.Format("(Me.{0} = other.{0})", KeyProperties(KeyProperties.Count - 1).Name))
-	#>
 	
 	End Function
 <#
