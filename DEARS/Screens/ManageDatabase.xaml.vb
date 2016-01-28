@@ -12,7 +12,7 @@ Public Class ManageDatabase
     End Property
 
     Public Sub LoadData(PropertyName As String) Implements IBaseScreen.LoadData
-
+        SharedState.DBContext.Grades.ToList()
     End Sub
 
     Private Sub RecreateDatabaseButton_Click(sender As Object, e As RoutedEventArgs)

@@ -74,6 +74,7 @@ Class MainWindow
     Public Sub ReloadData()
         TimeYearsViewSource.Source = SharedState.DBContext.TimeYears.ToList()
         SemestersViewSource.Source = SharedState.DBContext.Semesters.ToList()
+        SharedState.DBContext.Grades.ToList()
     End Sub
     Private Sub SaveButton_Click(sender As Object, e As RoutedEventArgs)
         SharedState.DBContext.SaveChanges()
